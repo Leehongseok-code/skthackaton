@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from aidoctor import views  # 더 이상 필요하지 않으므로 삭제
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('aidoctor/', include('aidoctor.urls')), 
 ]
+
+
