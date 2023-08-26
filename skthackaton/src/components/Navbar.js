@@ -48,20 +48,20 @@ function Navbar() {
               <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className="nav-item">
                   <Link
-                    to="/news"
+                    to="/board"
                     className={`nav-links ${activeLink === 'news' ? 'active' : ''}`}
                     onClick={() => handleLinkClick('news')}
                   >
-                    뉴스
+                    게시판
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    to="/ranks"
+                    to="/"
                     className={`nav-links ${activeLink === 'ranks' ? 'active' : ''}`}
                     onClick={() => handleLinkClick('ranks')}
                   >
-                    실시간 TOP100
+                    모아보기
                   </Link>
                 </li>
                 <li className="nav-item">
