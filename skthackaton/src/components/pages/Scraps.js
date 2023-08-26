@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import '../../App.css';
 import axios from 'axios';
+import Step from "../Step";
 
 const Scraps = () => {
   const [responseData, setResponseData] = useState(null);
@@ -19,14 +20,17 @@ const Scraps = () => {
   }, [fetchData]);
 
   return (
-    <div className="App-header">
-      <h1>Server Response:</h1>
-      {responseData ? (
-        <pre>{JSON.stringify(responseData, null, 2)}</pre> // 응답 데이터를 JSON 형태로 출력
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <>
+        <Step />
+        <div className="App-header">
+          <h1>Server Response:</h1>
+          {responseData ? (
+              <pre>{JSON.stringify(responseData, null, 2)}</pre> // 응답 데이터를 JSON 형태로 출력
+          ) : (
+              <p>Loading...</p>
+          )}
+        </div>
+    </>
   );
 };
 
