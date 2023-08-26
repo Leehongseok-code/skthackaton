@@ -1,12 +1,19 @@
 //import React from 'react';
 import React, { useState } from 'react';
 import '../../App.css';
+import HeroSection from '../HeroSection';
+import Cards from '../Cards';
+import Footer from '../Footer';
+
+
 
 function Home() {
 
   return (
       <>
-        Hi
+      <HeroSection/>
+      <Cards/>
+      <Footer/>
       </>
 
   );

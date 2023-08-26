@@ -39,8 +39,8 @@ function Navbar() {
           <nav className="navbar">
             <div className="navbar-container">
               {/* 모바일버전에서 클릭하면 메뉴 보이도록 설정하는 것도 한다. (close Mobile Menu)는 다시 버튼 누르면 없어지고 생기고 하도록 한다. */}
-              <Link to="/" className={`navbar-logo ${activeLink === 'news' ? 'active' : ''}`} onClick={() => handleLinkClick('news')}>
-                coinicorn
+              <Link to="/" className={`navbar-logo ${activeLink === 'home' ? 'active' : ''}`} onClick={() => handleLinkClick('home')}>
+                정서랑
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -49,28 +49,19 @@ function Navbar() {
                 <li className="nav-item">
                   <Link
                     to="/board"
-                    className={`nav-links ${activeLink === 'news' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('news')}
+                    className={`nav-links ${activeLink === 'board' ? 'active' : ''}`}
+                    onClick={() => handleLinkClick('board')}
                   >
                     게시판
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link
-                    to="/"
-                    className={`nav-links ${activeLink === 'ranks' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('ranks')}
+                    to="/scraps"
+                    className={`nav-links ${activeLink === 'scraps' ? 'active' : ''}`}
+                    onClick={() => handleLinkClick('scraps')}
                   >
                     모아보기
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    to="/services"
-                    className={`nav-links ${activeLink === 'services' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('services')}
-                  >
-                    서비스
                   </Link>
                 </li>
                 {/* <li className="nav-item">
