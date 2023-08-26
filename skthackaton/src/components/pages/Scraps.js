@@ -19,7 +19,7 @@ const Scraps = () => {
   }, [fetchData]);
 
   return (
-    <div>
+    <div className="App-header">
       <h1>Server Response:</h1>
       {responseData ? (
         <pre>{JSON.stringify(responseData, null, 2)}</pre> // 응답 데이터를 JSON 형태로 출력
