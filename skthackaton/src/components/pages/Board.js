@@ -42,7 +42,8 @@ function Board() {
   };
 
   return (
-    <div>
+    <div className="App-header">
+     <div>
       <>
         Hi
       </>
@@ -50,6 +51,7 @@ function Board() {
         <input type="file" name="file" onChange={handleFileChange} />
         <input type="submit" value="Upload" />
       </form>
+     </div>
     </div>
   );
 }

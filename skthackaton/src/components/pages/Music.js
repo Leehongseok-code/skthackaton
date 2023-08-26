@@ -4,6 +4,7 @@ import Footer from '../Footer';
 import axios from "axios";
 import Cards2 from '../Cards2';
 
+
 function Music() {
 //   const [text, setText] = useState("없음");
   

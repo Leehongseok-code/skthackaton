@@ -1,6 +1,7 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
+import '../App.css';
 
 function Cards() {
   return (

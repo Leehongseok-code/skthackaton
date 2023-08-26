@@ -1,17 +1,14 @@
 import React from 'react';
-import './Cards2.css';
+import './Cards.css';
 import CardItem from './CardItem';
-import {Button} from './Button';
+import '../App.css';
+
 
 function Cards2() {
   return (
     <div className='cards'>
-        <div className='btn-center'>
-            <Button className = 'btns' buttonStyle = 'btn--primary' 
-                buttonSize = 'btn--large'>음악 재생<i className = 'far fa-play-circle'/></Button>
-        </div>
       <h1 style={{ fontSize: '36px', textAlign: 'center', fontFamily: 'Noto Sans KR, sans-serif' }}>
-      사진을 골라주세요!
+      2023 국내 TOP 가상화폐 거래소 바로가기
       </h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
@@ -49,10 +46,6 @@ function Cards2() {
               path='https://www.gopax.co.kr/'
             />
           </ul>
-        </div>
-        <div className='btn-right'>
-        <Button className = 'btns' buttonStyle = 'btn--primary' 
-                buttonSize = 'btn--large'>다음</Button>
         </div>
       </div>
     </div>
