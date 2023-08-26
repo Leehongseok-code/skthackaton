@@ -8,6 +8,14 @@ function SelectPic() {
     <>
     {/* <Step /> */}
     <div className="App-header">
+    <>
+      <Cards2 />
+      {/* <Board /> */}
+      <br></br>
+      <br></br>
+      <br></br>
+      <Footer />
+    </>
     </div>
     </>
   );
