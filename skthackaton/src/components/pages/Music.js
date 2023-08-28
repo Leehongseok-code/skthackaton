@@ -1,9 +1,7 @@
 import '../../App.css';
-import App from '../../App';
 import React, { useState } from "react";
 import Footer from '../Footer';
 import axios from "axios";
-import Cards2 from '../Cards2';
 import { Button } from '../Button';
 import {Link} from 'react-router-dom';
 import MList from '../MList';
@@ -33,46 +31,29 @@ function Music() {
   return (
     <>
     <div className="App-back">
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-
-      <h1>키워드를 골라주세요!</h1>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <br></br><br></br>
+      <br></br><br></br>
+      <img className='mood' alt="mood" src="image/smile.png" />
+      <h1>오늘의 감정 키워드를 골라주세요!</h1>
+      <br></br><br></br>
+      <br></br><br></br>
       <div className="mlist">
-       <MList
-         onSelectButton={handleButtonSelect}
-         selectedButton={selectedButton}
-          />
-          
+        <MList onSelectButton={setSelectedButton} selectedButton={selectedButton} />
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <br></br><br></br>
+      <br></br><br></br>
 
      <div className="btn-center"> {/* 오른쪽에 정렬할 부모 요소 */}
-     <Link 
+     <button 
       to="/selectpic" 
-      className="btns btn--large" style={{ backgroundColor: 'black', color: 'white' }}
+      className="btns btn--large btn--music-style"
       onClick={handleGenerateMusic}>
-             음악 생성
-      </Link>
+             음악 듣기
+      </button>
      </div>
-
+      <br></br><br></br>
+      <br></br><br></br>
       <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      
-
       <Footer />
       </div>
     </>

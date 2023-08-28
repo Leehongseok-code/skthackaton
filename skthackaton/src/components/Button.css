@@ -42,6 +42,14 @@
 
 }
 
+.btn--music-style {
+    background-color: black;
+    color: white;
+    border-color: black;
+    border-radius: 15px;
+    width: 25vh;
+}
+
 
 .btn--medium:hover, 
 .btn--large:hover{
