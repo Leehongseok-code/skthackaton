@@ -6,6 +6,8 @@ import Home from './components/pages/Home';
 import Board from './components/pages/Board';
 import Scraps from './components/pages/Scraps';
 import Music from './components/pages/Music';
+import SelectPic from './components/pages/SelectPic';
+import MList from './components/MList'
 import './App.css';
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="/board" element={<Board />} />
         <Route path="/Scraps" element={<Scraps />} />
         <Route path="/Music" element={<Music />} />
+        <Route path="/selectpic" element={<SelectPic />} />
+        <Route path="/mlist" element={<MList />} />
       </Routes>
     </BrowserRouter>
   );
