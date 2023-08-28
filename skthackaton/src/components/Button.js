@@ -6,7 +6,7 @@ const STYLES = ['btn--primary', 'btn--outline','btn--primary2'];
 
 const SIZES = ['btn--medium', 'btn--large'];
 
-export const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
+export const Button = ({children, type, onClick, buttonStyle, buttonSize, to}) => {
     // buttonstyle이 따로 지정되지 않으면 가장 기본인 배열의 0번째가 설정됨
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
     // buttonsize가 지정되지 않으면 가장 기본 사이즈인 0번재 btn-medium이 설정됨
@@ -14,7 +14,7 @@ export const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
 
     return (
         //children안에 어떤 내용을 입력해도 버튼 이름이 된다. 
-        <Link className = 'btn-mobile'>
+        <Link to={to} className = 'btn-mobile'>
             <button 
             className={`btn ${checkButtonStyle} ${checkButtonSize}`}
             onClick={onClick}
