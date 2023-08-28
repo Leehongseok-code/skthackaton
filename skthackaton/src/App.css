@@ -61,6 +61,12 @@
   margin-bottom: 15px; 
 }
 
+.btn-right {
+  display: flex;
+  justify-content: flex-end; /* 버튼을 오른쪽에 정렬 */
+  margin-top: 20px; /* 버튼 위쪽 간격 설정 */
+}
+
 .App-back{
   background-color: #FFF9C8;
   justify-content: center;

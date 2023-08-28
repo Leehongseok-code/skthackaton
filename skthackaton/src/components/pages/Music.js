@@ -3,15 +3,20 @@ import React, { useState } from "react";
 import Footer from '../Footer';
 import axios from "axios";
 import { Button } from '../Button';
-import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MList from '../MList';
 
 
 function Music() {
   const [selectedButton, setSelectedButton] = useState(""); // 클릭된 버튼 정보
+  const navigate = useNavigate();
 
   const handleButtonSelect = (buttonText) => {
     setSelectedButton(buttonText);
+  };
+
+  const navigateToPic = () => {
+    navigate("/selectpic");
   };
 
   const handleGenerateMusic = () => {
@@ -47,7 +52,7 @@ function Music() {
      <Button 
       to="/selectpic" 
       className="btns btn--large btn--music-style"
-      onClick={handleGenerateMusic}>
+      onClick={handleGenerateMusic && navigateToPic}>
              음악 듣기
       </Button>
      </div>
