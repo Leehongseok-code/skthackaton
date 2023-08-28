@@ -17,10 +17,9 @@ function HeroSection() {
             <p>자폐 아동을 위한 합리적인 미술 치료 서비스</p>
             <p><span onClick={()=>{heartChange(heart+1)}}>❤</span> { heart }</p>
             <div className="hero-btns">
-                <Link to="/music" className="btns btn--outline btn--large">
-                    GET STARTED
-                </Link>
-                 <Button className = 'btns' buttonStyle = 'btn--primary' 
+                <Button className='btns' buttonStyle='btn--outline'
+                buttonSize='btn--large' to="/music">GET STARTED</Button>
+                <Button className = 'btns' buttonStyle = 'btn--primary' 
                 buttonSize = 'btn--large'>WATCH TRAILER<i className = 'far fa-play-circle'/></Button>
             </div>
                
