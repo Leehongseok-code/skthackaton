@@ -1,20 +1,19 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
-import '../App.css';
 
 function Cards() {
   return (
     <div className='cards'>
       <h1 style={{ fontSize: '36px', textAlign: 'center', fontFamily: 'Noto Sans KR, sans-serif' }}>
-      2023 국내 TOP 가상화폐 거래소 바로가기
+      SKT와 함께하는 자폐 아동 치료 서비스
       </h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
-              src='https://blog.btcc.com/wp-content/uploads/2023/01/upbit_facebook-1024x535.png'
-              text='카카오 스탁과 두나무에 의해 운영되고 있는 현재 대한민국에서 가장 대표적이고 유명한 코인 거래소이다.'
+              src='https://img.etnews.com/photonews/2112/1486604_20211222134917_917_0001.jpg'
+              text='SK텔레콤이 자체 개발한 AI 기반 영상분석 모델은 영상 데이터에서 발달장애인의 특정 동작과 모션 패턴을 분석, 도전적 행동 유형과 발생 빈도·강도 등을 정확히 인지한다.'
               label='업비트(Upbit)'
               path='https://upbit.com/'
             />

@@ -11,11 +11,12 @@ function CardItem2(props) {
               className='cards__item__img'
               alt='Travel Image'
               src={props.src}
+              style={{objectFit:'cover',width:'100%',height:'100%'}}
             />
           </figure>
-          <div className='cards__item__info'>
+          {/* <div className='cards__item__info'>
             <h5 className='cards__item__text'>{props.text}</h5>
-          </div>
+          </div> */}
         </Link>
       </li>
     </>
