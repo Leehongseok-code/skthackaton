@@ -5,7 +5,7 @@
 .btn{
     padding: 8px 20px;
     border-radius: 2px;
-    outline: none;
+    outline: black;
     border: none;
     cursor: pointer;
 }
@@ -16,11 +16,17 @@
     border: 1px solid var(--primary);
 }
 
+.btn--primary2{
+    background-color: var(--primary);
+    color: white;
+    border: 1px solid var(--primary);
+}
+
 .btn--outline {
     background-color: transparent;
-    color: white;
+    color: black;
     padding:8px 20px;
-    border: 1px solid var(--primary);
+    border: 1px solid black;
     transition: all 0.3s ease-out;
 }
 
@@ -44,3 +50,12 @@
     transition: all 0.3s ease-out;
 
 }
+.btn-space{
+
+    margin-right: 50px;
+}
+
+.btn--large-custom {
+    font-size: 30px; /* 더 큰 글자 크기 */
+    padding: 30px 60px; /* 더 큰 내부 여백 */ 
+  }
