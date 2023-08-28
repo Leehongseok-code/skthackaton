@@ -26,14 +26,13 @@ h1 {
   margin-bottom: 24px;
 }
 
-
 .cards__item {
   display: flex;
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
-  height: 350px; /* 추가된 부분: 카드 아이템의 높이를 350px로 설정 */
-  width: 350px;
+  width: 400px; /* 수정된 부분: 카드 아이템의 너비를 400px로 설정 */
+  height: 400px; /* 수정된 부분: 카드 아이템의 높이를 400px로 설정 */
 }
 
 .cards__item__link {
@@ -53,6 +52,9 @@ h1 {
   width: 100%;
   padding-top: 67%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 이미지를 수평 및 수직으로 가운데로 정렬 */
 }
 
 .fade-img {

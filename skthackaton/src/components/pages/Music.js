@@ -44,12 +44,12 @@ function Music() {
       <br></br><br></br>
 
      <div className="btn-center"> {/* 오른쪽에 정렬할 부모 요소 */}
-     <button 
+     <Button 
       to="/selectpic" 
       className="btns btn--large btn--music-style"
       onClick={handleGenerateMusic}>
              음악 듣기
-      </button>
+      </Button>
      </div>
       <br></br><br></br>
       <br></br><br></br>

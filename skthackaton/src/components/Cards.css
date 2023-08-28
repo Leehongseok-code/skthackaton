@@ -1,7 +1,7 @@
+/* Cards2.css */
 .cards {
   padding: 4rem;
   background: #fff;
-  font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
@@ -29,59 +29,34 @@ h1 {
 
 .cards__item {
   display: flex;
-  flex: 1;
-  margin: 0 1rem;
+  flex-direction: column; /* 아이템을 세로로 배치하여 이미지와 텍스트를 위아래로 배치 */
+  align-items: center; /* 가운데 정렬 */
   border-radius: 10px;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
 }
 
 .cards__item__link {
   display: flex;
   flex-flow: column;
-  width: 100%;
-  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
-  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-  border-radius: 10px;
-  overflow: hidden;
+  width: 70%;
+  height: 100%;
   text-decoration: none;
+  padding-right: 80px; /* 예시 값, 원하는 크기로 조절해보세요 */
 }
 
 .cards__item__pic-wrap {
-  position: relative;
-  width: 100%;
-  padding-top: 67%;
-  overflow: hidden;
-}
-
-.fade-img {
-  animation-name: fade-img;
-  animation-duration: 2s;
-}
-
-.cards__item__pic-wrap::after {
-  content: attr(data-category);
-  position: absolute;
-  bottom: 0;
-  margin-left: 10px;
-  padding: 6px 8px;
-  max-width: calc((100%) - 60px);
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  background-color: #1f98f4;
-  box-sizing: border-box;
+  flex: 1; /* 이미지가 남은 공간을 모두 차지 */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 이미지를 가운데로 정렬 */
+  /* padding-left: 10px; 예시 값, 원하는 크기로 조절해보세요 */
 }
 
 .cards__item__img {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  width: 100%;
   max-width: 100%;
-  height: 100%;
   max-height: 100%;
   object-fit: cover;
   transition: all 0.2s linear;
@@ -100,6 +75,7 @@ h1 {
   font-size: 18px;
   font-family: 'Noto Sans KR', sans-serif;
   line-height: 24px;
+  padding-left: 20px;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -119,3 +95,4 @@ h1 {
     margin-bottom: 2rem;
   }
 }
+
