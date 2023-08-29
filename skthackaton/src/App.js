@@ -13,6 +13,8 @@ import MList from './components/MList'
 import './App.css';
 import MPlayer from './components/MPlayer';
 import { StepperWithContent } from './components/StepperWithContent';
+import ProgressStepper from './components/ProgressStepper';
+import CustomAudioPlayer from './components/CustomAudioPlayer';
 
 function App() {
   return (
@@ -28,7 +30,9 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/mlist" element={<MList />} />
         <Route path="/mplayer" element={<MPlayer />} />
-        <Route path="/steppereithcontent" element={<StepperWithContent />} />
+        <Route path="/stepperwithcontent" element={<StepperWithContent />} />
+        <Route path="/progressstepper" element={<ProgressStepper />} />
+        <Route path="/customaudioplayer" element={<CustomAudioPlayer />} />
       </Routes>
     </BrowserRouter>
   );

@@ -9,6 +9,7 @@ import { Button } from '../Button';
 import Cards2 from '../Cards2';
 import Footer from '../Footer';
 import MPlayer from '../MPlayer';
+import CustomAudioPlayer from '../CustomAudioPlayer';
 
 
 function SelectPic() {
@@ -101,6 +102,7 @@ function SelectPic() {
           <br></br>
           <div className="mplayer-container">
             <MPlayer/>
+            {/* <CustomAudioPlayer/> */}
           </div>
 
           <div className="Content">

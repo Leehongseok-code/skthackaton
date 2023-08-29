@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import '../../App.css';
 import axios from 'axios';
 import Step, { StepperWithContent } from "../StepperWithContent";
+import ProgressStepper from '../ProgressStepper';
 
 const Scraps = () => {
   const [responseData, setResponseData] = useState(null);
@@ -19,10 +20,49 @@ const Scraps = () => {
     fetchData(); // 컴포넌트가 마운트되면 데이터를 가져옴
   }, [fetchData]);
 
+
+  const [activeStep, setActiveStep] = useState(0);
+  const steps = ['Step 1', 'Step 2', 'Step 3', 'Step 4'];
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   return (
     <>
-        <StepperWithContent />
+
+
+<div>
+      <h1>Progress Stepper Example</h1>
+      <ProgressStepper steps={steps} activeStep={activeStep} />
+      <div>
+        {activeStep === steps.length - 1 ? (
+          <div>
+            <p>All steps completed</p>
+          </div>
+        ) : (
+          <div>
+            <div>
+              <button disabled={activeStep === 0} onClick={handleBack}>
+                Back
+              </button>
+              <button onClick={handleNext}>
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+
+
+        
         <div className="App-header">
+        {/* <StepperWithContent /> */}
           <h1>Server Response:</h1>
           {responseData ? (
               <pre>{JSON.stringify(responseData, null, 2)}</pre> // 응답 데이터를 JSON 형태로 출력
