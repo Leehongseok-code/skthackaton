@@ -10,6 +10,7 @@ import SelectPic from './components/pages/SelectPic';
 import Collage from './components/pages/Collage';
 import MList from './components/MList'
 import './App.css';
+import MPlayer from './components/MPlayer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/selectpic" element={<SelectPic />} />
         <Route path="/collage" element={<Collage />} />
         <Route path="/mlist" element={<MList />} />
+        <Route path="/mplayer" element={<MPlayer />} />
       </Routes>
     </BrowserRouter>
   );
