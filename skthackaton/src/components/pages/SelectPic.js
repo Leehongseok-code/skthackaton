@@ -8,6 +8,7 @@ import Step from "../Step";
 import { Button } from '../Button';
 import Cards2 from '../Cards2';
 import Footer from '../Footer';
+import MPlayer from '../MPlayer';
 
 
 function SelectPic() {
@@ -90,11 +91,18 @@ function SelectPic() {
     <>
       <div className='Pic'>
         <div>
-          <div className="btn-center">
+          {/* <div className="btn-center">
           <Button className = 'btns' buttonStyle = 'btn--primary' 
                       buttonSize = 'btn--large'>음악 재생<i className = 'far fa-play-circle'/></Button>
-          </div>
+          </div> */}
+
+          <br></br>
           <div className="exp">음악과 어울리는 이미지를 골라보자!</div>
+          <br></br>
+          <div className="mplayer-container">
+            <MPlayer/>
+          </div>
+
           <div className="Content">
               <p>
                 이미지를 클릭하거나 직접 말해보자!
