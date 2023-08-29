@@ -1,0 +1,5 @@
+.mplayer-container {
+  display: grid;
+  place-items: center;
+  height: 100px; /* 원하는 높이로 조정 */
+}

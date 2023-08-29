@@ -11,6 +11,7 @@ import Collage from './components/pages/Collage';
 import SignUp from './components/pages/SignUp';
 import MList from './components/MList'
 import './App.css';
+import MPlayer from './components/MPlayer';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/collage" element={<Collage />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/mlist" element={<MList />} />
+        <Route path="/mplayer" element={<MPlayer />} />
       </Routes>
     </BrowserRouter>
   );
