@@ -98,8 +98,16 @@ class GPT():
     def instruction_to_dict(self, instruction):
         instruction = "(apple,1) (butterfly,2)"
         #인풋이 words_list이고, 그것을 잘라서 사용 (apple, 1) (butterfly, 2)
-        positions = instruction.split()
-        print(positions)
+        temp_list_before = instruction.split()
+        temp_list_after = []
+        for inst in temp_list_before:
+            temp_list = inst.replace('(','').replace(')','')
+            temp_list_split = temp_list.split(',')
+            object = temp_list_split[0]
+            position = float(temp_list_split[1])
+            self.pictures_dict[object] = position
+        
+        print(self.pictures_dict)
         
         
 

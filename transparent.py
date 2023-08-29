@@ -1,7 +1,7 @@
 from PIL import Image
 
 # 이미지 파일 열기
-image = Image.open("./images/car.png")
+image = Image.open("./test_image/car.png")
 
 # 새로운 alpha channel 생성
 alpha_data = []
@@ -24,4 +24,4 @@ new_image = image.convert("RGBA")
 new_image.putalpha(alpha_channel)
 
 # 이미지 파일 저장
-new_image.save("transparent_image.png")
+new_image.save("./test_image/transparent_image.png")
