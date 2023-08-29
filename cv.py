@@ -15,7 +15,7 @@ def col(src2_path, x, y):
 
     
     rows, cols, channels = src2.shape #로고파일 픽셀값 저장
-    roi = src1[0:rows,0:cols] #로고파일 필셀값을 관심영역(ROI)으로 저장함.
+    roi = src1[y:rows + y, x:cols + x] #로고파일 필셀값을 관심영역(ROI)으로 저장함.
     #roi = src1[50:rows+50,50:cols+50] #로고파일 필셀값을 관심영역(ROI)으로 저장함.
     
     gray = cv2.cvtColor(src2, cv2.COLOR_BGR2GRAY) #로고파일의 색상을 그레이로 변경
@@ -45,4 +45,4 @@ def col(src2_path, x, y):
     '''
 
 if __name__ == "__main__":
-    col("", 50, 50)
+    col("black_bg.png", 500, 50)

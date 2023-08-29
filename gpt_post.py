@@ -11,9 +11,9 @@ class GPT():
         self.instruction_set = ""
 
     #감정에 어울리는 사진을 고른 후, 쉼표로 구분해서 출력해주는 함수
-    def select_pictures(self):
-        content = "너는 뛰어난 미술치료사야. 미술치료 콜라주에 필요한 사진을 선정해야 하는데, 네가 콜라주에 사용할 사진을\
-            20장 선정해야 해. 의뢰자는 현재 우울한 감정을 느끼고 있어. 이 의뢰자의 미술치료에 도움을 줄 만한 콜라주 재료\
+    def select_pictures(self, feeling):
+        content = f"너는 뛰어난 미술치료사야. 미술치료 콜라주에 필요한 사진을 선정해야 하는데, 네가 콜라주에 사용할 사진을\
+            20장 선정해야 해. 의뢰자는 현재 {feeling} 감정을 느끼고 있어. 이 의뢰자의 미술치료에 도움을 줄 만한 콜라주 재료\
                 사물들을 쉼표로 구분해서 20개 나열해 줘. 단어들은 영어로 작성해 줘.\
                     [예시]\
                         car, butterfly, flower, bee, T-shirts, puppy, cat"
@@ -147,7 +147,10 @@ class GPT():
         arr = ["black_bg.png", "car_mint.png", "car.png", "mint.png", "white_bg.png"]
         for i in range(len(arr)):
             pic = arr[i]
-            col(pic, (i % 3) * 300, (i//3) * 300)
+            print(pic)
+            r = i // 3
+            c = i % 3
+            col(pic, c * 600, r * 500)
 
 if __name__ == "__main__":
     gpt = GPT()
