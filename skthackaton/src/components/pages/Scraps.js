@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import '../../App.css';
 import axios from 'axios';
-import Step from "../Step";
+import Step, { StepperWithContent } from "../StepperWithContent";
 
 const Scraps = () => {
   const [responseData, setResponseData] = useState(null);
@@ -21,7 +21,7 @@ const Scraps = () => {
 
   return (
     <>
-        <Step />
+        <StepperWithContent />
         <div className="App-header">
           <h1>Server Response:</h1>
           {responseData ? (
