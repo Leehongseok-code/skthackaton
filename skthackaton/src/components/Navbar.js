@@ -64,7 +64,7 @@ function Navbar() {
                     모아보기
                   </Link>
                 </li>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                   <Link
                     to="/sign-up"
                     className={`nav-links-mobile ${activeLink === 'sign-up' ? 'active' : ''}`}
@@ -72,9 +72,9 @@ function Navbar() {
                   >
                     로그인
                   </Link>
-                </li> */}
+                </li>
               </ul>
-              {/* {button && <Button buttonStyle="btn--outline">로그인</Button>} */}
+              {button && <Button to="/sign-up" buttonStyle="btns btn--small btn--music-style">로그인</Button>}
             </div>
           </nav>
         </>
