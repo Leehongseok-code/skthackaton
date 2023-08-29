@@ -5,15 +5,16 @@ class GPT():
         openai.api_key = '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'
         messages = []
         self.words_list = []
+        self.selected_words_list = []
         self.pictures_dict = {}
 
     #감정에 어울리는 사진을 고른 후, 쉼표로 구분해서 출력해주는 함수
     def select_pictures(self):
         content = "너는 뛰어난 미술치료사야. 미술치료 콜라주에 필요한 사진을 선정해야 하는데, 네가 콜라주에 사용할 사진을\
             20장 선정해야 해. 의뢰자는 현재 우울한 감정을 느끼고 있어. 이 의뢰자의 미술치료에 도움을 줄 만한 콜라주 재료\
-                사물들을 쉼표로 구분해서 20개 나열해 줘.\
+                사물들을 쉼표로 구분해서 20개 나열해 줘. 단어들은 영어로 작성해 줘.\
                     [예시]\
-                        자동차, 나비, 꽃, 벌, 티셔츠, 강아지, 고양이"
+                        car, butterfly, flower, bee, T-shirts, puppy, cat"
 
         messages = []
         messages.append({"role": "user", "content":content})
@@ -29,9 +30,9 @@ class GPT():
 
     #select_pictures에서 선정한 단어들을 영어로 번역해서 출력하는 함수
     def translate(self, content):
-        content = "다음 단어들을 각각 영어로 번역해서 똑같이 쉼표로 구분된 형식으로 출력해 줘.\
+        content = "다음 단어들을 각각 한글로 번역해서 똑같이 쉼표로 구분된 형식으로 출력해 줘.\
                     [예시]\
-                        car, butterfly, flower, bee, T-shirts, puppy, cat" + content
+                        자동차, 나비, 꽃, 벌, 티셔츠, 강아지, 고양이" + content
 
         messages = []
         messages.append({"role": "user", "content":content})
@@ -77,20 +78,37 @@ class GPT():
         return chat_response
     
 
+    #답변으로 받은 단어들을 리스트로 저장
     def words_to_list(self, words):
         self.words_list = words.split(',')
         for i in range(len(self.words_list)):
             self.words_list[i] = self.words_list[i].strip().strip('.')
         print(self.words_list)
 
+    
+    #리스트에서 n개씩 묶어서 리턴
+    def select_random_objects(self, n):
+        self.selected_words_list = []
+        for i in range(len(self.words_list//n)):
+            temp = self.words_list[i * n : (i + 1) * n]
+            self.selected_words_list.append(temp)
+        print(self.selected_words_list)
 
-    #def instruction_to_dict(self, response):
 
+    def instruction_to_dict(self, instruction):
+        instruction = "(apple,1) (butterfly,2)"
+        #인풋이 words_list이고, 그것을 잘라서 사용 (apple, 1) (butterfly, 2)
+        positions = instruction.split()
+        print(positions)
+        
         
 
 if __name__ == "__main__":
     gpt = GPT()
+    '''
     selected_pictures = gpt.select_pictures()
     translated_pictures = gpt.translate(selected_pictures)
-    print(gpt.words_to_list(translated_pictures))
+    gpt.words_to_list(selected_pictures)
+    '''
+    gpt.instruction_to_dict("")
     #gpt.post("", ["자동차", "꽃", "나비"])
