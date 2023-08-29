@@ -1,4 +1,5 @@
 import openai
+from cv import col
 
 class GPT():
     def __init__(self):
@@ -7,6 +8,7 @@ class GPT():
         self.words_list = []
         self.selected_words_list = []
         self.pictures_dict = {}
+        self.instruction_set = ""
 
     #감정에 어울리는 사진을 고른 후, 쉼표로 구분해서 출력해주는 함수
     def select_pictures(self):
@@ -85,10 +87,10 @@ class GPT():
             prompt += picture
             prompt += ","
         prompt = prompt.strip(",")
-        prompt += "너는 뛰어난 그림치료사고 위에 있는 사진 중에 6개를 뽑아서 가로 세로 3*2의 직사각형의 칸에 배치할거야. \
-            각각의 칸을  왼쪽상단부터,왼쪽부터오른쪽으로 순서대로 1-6까지의 번호이라고 할때, 너가 고른 6개의 사물을 그림이라고 했을떄, \
-                각각의 그림을 몇번에 위치시키는게 가장 보기 좋을 지 알려줘.예시) (flower,2) (bag,6) 와 같은 형식으로 나타내줘"
-        #print(prompt)
+        prompt += "너는 뛰어난 그림치료사고 위에 있는 사진들을 가로 세로 3*2의 직사각형의 칸에 배치할거야. \
+            각각의 칸을  왼쪽상단부터,왼쪽부터오른쪽으로 순서대로 1-6까지의 번호이라고 할때, 너가 고른 5개의 사물을 그림이라고 했을떄, \
+                각각의 그림을 몇번에 위치시키는게 가장 보기 좋을 지 알려줘.예시) (flower,2) (bag,3)"
+        print(prompt)
 
         content = prompt
 
@@ -105,6 +107,7 @@ class GPT():
         chat_response = completion.choices[0].message.content 
         print(f'ChatGPT: {chat_response}')
         messages.append({"role":"assistant", "content": chat_response})
+        self.instruction_set = chat_response
         return chat_response        
 
 
@@ -139,16 +142,25 @@ class GPT():
         
         print(self.pictures_dict)
         
-        
+    def post_pictures(self, dict):
+        #나중에 dict 참고
+        arr = ["black_bg.png", "car_mint.png", "car.png", "mint.png", "white_bg.png"]
+        for i in range(len(arr)):
+            pic = arr[i]
+            col(pic, (i % 3) * 300, (i//3) * 300)
 
 if __name__ == "__main__":
     gpt = GPT()
     
-    selected_pictures = gpt.select_pictures()
-    gpt.make_instruction_set("", ["자동차", "꽃", "나비"])
     '''
+    selected_pictures = gpt.select_pictures()
+
     translated_pictures = gpt.translate(selected_pictures)
     gpt.words_to_list(selected_pictures)
+    
+    gpt.make_instruction_set("", gpt.selected_words_list)
+
+    gpt.instruction_to_dict(gpt.instruction_set)
     '''
-    gpt.instruction_to_dict("")
+    gpt.post_pictures({})
     #gpt.post("", ["자동차", "꽃", "나비"])
