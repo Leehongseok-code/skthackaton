@@ -12,7 +12,8 @@ function HeroSection() {
 
     return (
         <div className = 'hero-container'>
-            <video src="/videos/twinkle.mp4" autoPlay loop muted />
+            <img src="/image/bear.jpg"/>
+            {/* <video src="/videos/twinkle.mp4" autoPlay loop muted /> */}
             <h1>정서랑</h1>
             <p>자폐 아동을 위한 합리적인 미술 치료 서비스</p>
             <p><span onClick={()=>{heartChange(heart+1)}}>❤</span> { heart }</p>
