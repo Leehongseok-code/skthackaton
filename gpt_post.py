@@ -78,6 +78,36 @@ class GPT():
         return chat_response
     
 
+    def make_instruction_set(self, content, pictures):
+        prompt = ""
+        for i in range(len(pictures)):
+            picture = pictures[i]
+            prompt += picture
+            prompt += ","
+        prompt = prompt.strip(",")
+        prompt += "너는 뛰어난 그림치료사고 위에 있는 사진 중에 6개를 뽑아서 가로 세로 3*2의 직사각형의 칸에 배치할거야. \
+            각각의 칸을  왼쪽상단부터,왼쪽부터오른쪽으로 순서대로 1-6까지의 번호이라고 할때, 너가 고른 6개의 사물을 그림이라고 했을떄, \
+                각각의 그림을 몇번에 위치시키는게 가장 보기 좋을 지 알려줘.예시) (flower,2) (bag,6) 와 같은 형식으로 나타내줘"
+        #print(prompt)
+
+        content = prompt
+
+        messages = []
+        messages.append({"role": "user", "content":content})
+
+        if len(messages) > 4:
+            messages=messages[:-2]
+
+        completion = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=messages
+        )
+        chat_response = completion.choices[0].message.content 
+        print(f'ChatGPT: {chat_response}')
+        messages.append({"role":"assistant", "content": chat_response})
+        return chat_response        
+
+
     #답변으로 받은 단어들을 리스트로 저장
     def words_to_list(self, words):
         self.words_list = words.split(',')
@@ -113,8 +143,10 @@ class GPT():
 
 if __name__ == "__main__":
     gpt = GPT()
-    '''
+    
     selected_pictures = gpt.select_pictures()
+    gpt.make_instruction_set("", ["자동차", "꽃", "나비"])
+    '''
     translated_pictures = gpt.translate(selected_pictures)
     gpt.words_to_list(selected_pictures)
     '''

@@ -41,6 +41,6 @@ class DallE():
 
 if __name__ == "__main__":
     dalle = DallE()
-    dalle.generate(prompt = "a cute car with mint background")
+    dalle.generate(prompt = "a cute car with black background")
     
     #fix()
