@@ -12,6 +12,7 @@ import SignUp from './components/pages/SignUp';
 import MList from './components/MList'
 import './App.css';
 import MPlayer from './components/MPlayer';
+import { StepperWithContent } from './components/StepperWithContent';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/mlist" element={<MList />} />
         <Route path="/mplayer" element={<MPlayer />} />
+        <Route path="/steppereithcontent" element={<StepperWithContent />} />
       </Routes>
     </BrowserRouter>
   );

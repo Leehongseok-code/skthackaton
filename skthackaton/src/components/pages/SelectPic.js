@@ -4,7 +4,7 @@ import '../SelectPic.css';
 import '../StepButton.css';
 import { useNavigate } from 'react-router-dom';
 import Collage from './Collage';
-import Step from "../Step";
+import Step from "../StepperWithContent";
 import { Button } from '../Button';
 import Cards2 from '../Cards2';
 import Footer from '../Footer';
