@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../App.css';
 import Footer from '../Footer';
+import ProgressStepper from '../ProgressStepper';
 
 function Collage() {
+  const [activeStep, setActiveStep] = useState(2);
+  const steps = ['음악 생성', '이미지 선택', '콜라주'];
+
   const location = useLocation();
   const selectedImages = location.state?.selectedImages || [];
 
@@ -11,6 +15,7 @@ function Collage() {
 
   return (
     <>
+    <ProgressStepper steps={steps} activeStep={activeStep} />
       <div className="App-back">
         <div>
           <h2>콜라주</h2>

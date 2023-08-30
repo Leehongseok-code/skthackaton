@@ -9,9 +9,13 @@ import { Button } from '../Button';
 import Footer from '../Footer';
 import MPlayer from '../MPlayer';
 import CustomAudioPlayer from '../CustomAudioPlayer';
+import ProgressStepper from '../ProgressStepper';
 
 
 function SelectPic() {
+  const [activeStep, setActiveStep] = useState(1);
+  const steps = ['음악 생성', '이미지 선택', '콜라주'];
+
   const totalSteps = 5; // 총 5단계
   const imagesPerStep = 4; // 한 단계당 4개의 이미지
 
@@ -89,6 +93,7 @@ function SelectPic() {
 
   return (
     <>
+    <ProgressStepper steps={steps} activeStep={activeStep} />
       <div className='Pic'>
         <div>
           <br></br>

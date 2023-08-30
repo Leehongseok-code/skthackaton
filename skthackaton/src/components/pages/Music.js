@@ -5,10 +5,14 @@ import axios from "axios";
 import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
 import MList from '../MList';
+import ProgressStepper from '../ProgressStepper';
 
 
 
 function Music() {
+  const [activeStep, setActiveStep] = useState(0);
+  const steps = ['음악 생성', '이미지 선택', '콜라주'];
+
   const [selectedButton, setSelectedButton] = useState(""); // 클릭된 버튼 정보
   const navigate = useNavigate();
 
@@ -36,6 +40,7 @@ function Music() {
   };
   return (
     <>
+    <ProgressStepper steps={steps} activeStep={activeStep} />
     <div className="App-back">
       <br></br><br></br>
       <br></br><br></br>
