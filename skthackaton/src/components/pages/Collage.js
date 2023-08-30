@@ -15,18 +15,21 @@ function Collage() {
 
   return (
     <>
-    <ProgressStepper steps={steps} activeStep={activeStep} />
+      <ProgressStepper steps={steps} activeStep={activeStep} />
       <div className="App-back">
         <div>
-          <h2>콜라주</h2>
-          {selectedImages.map((imageInfo, index) => (
-            imageInfo && (
-              <div key={index} className="btn-center">
-                <img src={imageInfo.path} alt={imageInfo.name} />
-                <p>{imageInfo.name}</p>
-              </div>
-            )
-          ))}
+          <br></br><br></br>
+          <h1 className='h1'>콜라주</h1><br></br><br></br>
+          <div className="image-list">
+            {selectedImages.map((imageInfo, index) => (
+              imageInfo && (
+                <div key={index}>
+                  <img className="image-total" src={imageInfo.path} alt={imageInfo.name} />
+                  <p>{imageInfo.name}</p>
+                </div>
+              )
+            ))}
+          </div>
         </div>
       </div>
       <Footer />
