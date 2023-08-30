@@ -22,7 +22,7 @@ const Scraps = () => {
 
 
   const [activeStep, setActiveStep] = useState(0);
-  const steps = ['Step 1', 'Step 2', 'Step 3', 'Step 4'];
+  const steps = ['음악 생성', '이미지 선택', '콜라주'];
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
