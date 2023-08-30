@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import '../../App.css';
 import '../SelectPic.css';
 import '../StepButton.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation  , useNavigate } from 'react-router-dom';
 import Collage from './Collage';
-import Step from "../StepperWithContent";
 import { Button } from '../Button';
 import Footer from '../Footer';
 import MPlayer from '../MPlayer';
@@ -19,11 +19,27 @@ function SelectPic() {
   const totalSteps = 5; // 총 5단계
   const imagesPerStep = 4; // 한 단계당 4개의 이미지
 
-  const navigate = useNavigate(); // useHistory 객체 생성
+  // URL 파라미터 받아오기
+  const location = useLocation();
+  const selectedNumber = location.state.selectedNumber;
+  console.log("Received ID:", selectedNumber);
+
+  const navigate = useNavigate();
 
   const [selectedStep, setSelectedStep] = useState(0); // 선택된 단계
   const [selectedImages, setSelectedImages] = useState(Array(totalSteps).fill(null)); // 각 단계별 선택된 이미지 인덱스
   const [showCompleteButton, setShowCompleteButton] = useState(false);
+
+  const handleGeneratePic = () => {
+    axios
+        .post("http://127.0.0.1:8000/aidoctor/${id}/")
+        .then((response) => {
+          // 성공적으로 백엔드에 전송되었을 때의 처리
+        })
+        .catch((error) => {
+          // 오류 발생 시의 처리
+        });
+  };
 
   const imageInfo  = [
     { path: '/image/ex1.png', name: '강아지' },

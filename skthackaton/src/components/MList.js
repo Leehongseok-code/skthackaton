@@ -1,31 +1,27 @@
-import '../App.css';
 import React, { useState } from "react";
-import axios from "axios";
 
-function MList() {
-  let emotions = ["행복", "불안", "슬픔", "분노", "즐거움", "두려움"];
+function MList({ onSelectButton }) {
+  let emotions = ["즐거움", "슬픔", "분노", "행복", "불안", "두려움"];
   let [btnActive, setBtnActive] = useState("");
 
   const toggleActive = (e) => {
-    setBtnActive((prev) => (prev === e.target.value ? "" : e.target.value));
+    const selectedEmotion = emotions[e.target.value];
+    setBtnActive((prev) => (prev === selectedEmotion ? "" : selectedEmotion));
+    onSelectButton(selectedEmotion); // 선택된 감정 전달
   };
 
   return (
     <div className="btn-center">
-      {emotions.map((item, index) => {
-        return (
-          <>
-            <button
-            key={index}
-            value={index}
-            className={"btn" + (index == btnActive ? " active" : "")}
-            onClick={toggleActive}
-            >
-              {item}
-            </button>
-          </>
-        );
-      })}
+      {emotions.map((item, index) => (
+        <button
+          key={index}
+          value={index}
+          className={"btn" + (item === btnActive ? " active" : "")}
+          onClick={toggleActive}
+        >
+          {item}
+        </button>
+      ))}
     </div>
   );
 }
