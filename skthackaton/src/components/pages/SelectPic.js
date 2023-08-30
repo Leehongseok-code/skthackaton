@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import axios from "axios";
 import '../../App.css';
 import '../SelectPic.css';
@@ -24,22 +24,38 @@ function SelectPic() {
   const selectedNumber = location.state.selectedNumber;
   console.log("Received ID:", selectedNumber);
 
-  const navigate = useNavigate();
-
   const [selectedStep, setSelectedStep] = useState(0); // 선택된 단계
   const [selectedImages, setSelectedImages] = useState(Array(totalSteps).fill(null)); // 각 단계별 선택된 이미지 인덱스
   const [showCompleteButton, setShowCompleteButton] = useState(false);
 
-  const handleGeneratePic = () => {
-    axios
-        .post("http://127.0.0.1:8000/aidoctor/${id}/")
-        .then((response) => {
-          // 성공적으로 백엔드에 전송되었을 때의 처리
-        })
-        .catch((error) => {
-          // 오류 발생 시의 처리
-        });
-  };
+  // const [imageInfo, setImageInfo] = useState([]); // 이미지 정보 상태
+
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   handleGeneratePic(); // 컴포넌트가 마운트될 때 이미지 정보를 가져옴
+  // }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
+
+  // const handleGeneratePic = () => {
+  //   axios
+  //       .post(`http://127.0.0.1:8000/aidoctor/${selectedNumber}/`)
+  //       .then((response) => {
+  //         // 서버에서 받은 응답 데이터
+  //         const serverImageInfo = response.data;
+
+  //         // 서버에서 받아온 이미지 정보를 현재 이미지 정보에 추가
+  //         const updatedImageInfo = serverImageInfo.map(item => ({
+  //           path: item.picture_url,
+  //           name: item.word
+  //         }));
+
+  //         // imageInfo 배열 업데이트
+  //         setImageInfo(updatedImageInfo);
+  //       })
+  //       .catch((error) => {
+  //         // 오류 발생 시의 처리
+  //       });
+  //   };
 
   const imageInfo  = [
     { path: '/image/ex1.png', name: '강아지' },
