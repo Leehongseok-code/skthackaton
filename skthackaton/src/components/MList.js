@@ -16,6 +16,7 @@ function MList() {
         return (
           <>
             <button
+            key={index}
             value={index}
             className={"btn" + (index == btnActive ? " active" : "")}
             onClick={toggleActive}
