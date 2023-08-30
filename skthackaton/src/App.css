@@ -111,6 +111,27 @@
   margin-bottom: 1rem;
 }
 
+.download-all-btn {
+  display: flex; /* Flexbox 레이아웃 사용 */
+  margin-left: 10%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.download-all-btn:hover {
+  background-color: #0056b3;
+}
+
+.download-all-btn:active {
+  background-color: #003f80;
+}
+
 .sign-up {
   background-position: center;
   background-size: cover;
