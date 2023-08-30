@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {Button} from './Button';
 import './Navbar.css';
 
@@ -7,6 +7,8 @@ function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
     const [activeLink, setActiveLink] = useState('');
+    
+    const navigate = useNavigate(); // useHistory 훅 사용
 
     const handleClick = () => setClick(!click) ;
     const closeMobileMenu = () => setClick(false);
@@ -33,6 +35,12 @@ function Navbar() {
     };
 
     window.addEventListener('resize', showButton);
+
+    // 로그인 버튼 클릭 시 이벤트 핸들러
+    const handleLoginButtonClick = () => {
+      navigate("/sign-up"); // 페이지 이동
+    };
+
 
     return (
         <>
@@ -65,20 +73,17 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to="/sign-up"
-                    className={`nav-links-mobile ${activeLink === 'sign-up' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('sign-up')}
-                  >
+                  {/* 로그인 버튼 클릭 시 이벤트 핸들러 호출 */}
+                  <button className={`nav-links-mobile ${activeLink === 'sign-up' ? 'active' : ''}`} onClick={handleLoginButtonClick}>
                     로그인
-                  </Link>
+                  </button>
                 </li>
               </ul>
-              {button && <Button to="/sign-up" buttonStyle="btns btn--small btn--music-style">로그인</Button>}
+              {button && <button className="nav-links" onClick={handleLoginButtonClick}>로그인</button>}
             </div>
           </nav>
         </>
     );
 }
 
-export default Navbar
+export default Navbar;
