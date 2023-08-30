@@ -93,7 +93,7 @@ function SelectPic() {
         <div>
           <br></br>
           <div className="exp">음악과 어울리는 이미지를 골라보자!</div>
-          <br></br>
+          
           <div className="mplayer-container">
             <MPlayer/>
             {/* <CustomAudioPlayer/> */}
@@ -116,7 +116,7 @@ function SelectPic() {
                   <br></br>
                 </div>
               ))}
-              <div className="step">{selectedStep+1}/5</div>
+              <div className="step">{selectedStep+1}/5</div><br></br>
               {showCompleteButton && (
                 <button
                   className="btns btn--large btn--music-style"
