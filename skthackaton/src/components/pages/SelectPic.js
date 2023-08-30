@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import Collage from './Collage';
 import Step from "../StepperWithContent";
 import { Button } from '../Button';
-import Cards2 from '../Cards2';
 import Footer from '../Footer';
 import MPlayer from '../MPlayer';
 import CustomAudioPlayer from '../CustomAudioPlayer';
@@ -92,11 +91,6 @@ function SelectPic() {
     <>
       <div className='Pic'>
         <div>
-          {/* <div className="btn-center">
-          <Button className = 'btns' buttonStyle = 'btn--primary' 
-                      buttonSize = 'btn--large'>음악 재생<i className = 'far fa-play-circle'/></Button>
-          </div> */}
-
           <br></br>
           <div className="exp">음악과 어울리는 이미지를 골라보자!</div>
           <br></br>
@@ -113,7 +107,7 @@ function SelectPic() {
               {imageInfo.slice(selectedStep * imagesPerStep, (selectedStep + 1) * imagesPerStep).map((info, index) => (
                 <div key={index} className="paint1">
                     <img
-                      className={`img ${selectedImages[selectedStep] === index ? 'selected' : ''}`}
+                      className="img"
                       alt={`num${selectedStep * imagesPerStep + index + 1}`}
                       src={info.path}
                       onClick={() => handleImageClick(index)}

@@ -64,12 +64,15 @@
   }
   .cam4 {
     margin-left: 3rem;
-  
     float: left;
     width: 30vw;
     height: 40vh;
   }
   .img {
+    display: inherit;
+    position: relative;
+    object-fit: contain;
+    z-index: 1;
     width: 15vw;
     height: 26vh;
     margin-bottom: 1rem;
