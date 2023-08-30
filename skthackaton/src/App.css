@@ -77,11 +77,21 @@
   overflow: hidden; /* 내용이 화면을 벗어나지 않도록 설정 */
 }
 
+.h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
 .mood {
   display: inherit;
-  width: 10vh;
-  margin-left: 73vh;
-  margin-bottom: -3vh;
+  position: relative; /* 위치 조정을 위해 position 설정 */
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  left: 45%; /* 오른쪽 여백 조정 */
+  z-index: 1;
 }
 
 .sign-up {

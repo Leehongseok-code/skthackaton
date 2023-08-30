@@ -39,8 +39,8 @@ function Music() {
     <div className="App-back">
       <br></br><br></br>
       <br></br><br></br>
-      <img className='mood' alt="mood" src="image/smile.png" />
-      <h1>오늘의 감정 키워드를 골라주세요!</h1>
+      <img className='mood' alt="mood" src='/image/smile.png' />
+      <h1 className='h1'>오늘의 감정 키워드를 골라주세요!</h1>
       <br></br><br></br>
       <br></br><br></br>
       <div className="mlist">
@@ -49,13 +49,13 @@ function Music() {
       <br></br><br></br>
       <br></br><br></br>
 
-     <div className="btn-center"> {/* 오른쪽에 정렬할 부모 요소 */}
-     <button
-      className="btns btn--large btn--music-style"
-      onClick={handleGenerateMusic && navigateToPic}>
-             음악 듣기
-      </button>
-     </div>
+      <div className="btn-center"> {/* 오른쪽에 정렬할 부모 요소 */}
+      <button
+        className="btns btn--large btn--music-style"
+        onClick={handleGenerateMusic && navigateToPic}>
+              음악 듣기
+        </button>
+      </div>
       <br></br><br></br>
       <br></br><br></br>
       <br></br>
