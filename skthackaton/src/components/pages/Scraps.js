@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import '../../App.css';
+import '../styles.css'; // 생성한 CSS 파일을 가져옵니다.
 import axios from 'axios';
 import Step, { StepperWithContent } from "../StepperWithContent";
 import ProgressStepper from '../ProgressStepper';
