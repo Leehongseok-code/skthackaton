@@ -79,7 +79,7 @@ class GPT():
         messages.append({"role":"assistant", "content": chat_response})
         return chat_response
     
-
+    #각 사물을 괄호로 묶은 후, 공백으로 구분하여 출력
     def make_instruction_set(self, content, pictures):
         prompt = ""
         for i in range(len(pictures)):
@@ -87,9 +87,12 @@ class GPT():
             prompt += picture
             prompt += ","
         prompt = prompt.strip(",")
-        prompt += "너는 뛰어난 그림치료사고 위에 있는 사진들을 가로 세로 3*2의 직사각형의 칸에 배치할거야. \
+        prompt += "\
+            너는 뛰어난 그림치료사고 위에 있는 사진들을 가로 세로 3*2의 직사각형의 칸에 배치할거야. \
             각각의 칸을  왼쪽상단부터,왼쪽부터오른쪽으로 순서대로 1-6까지의 번호이라고 할때, 너가 고른 5개의 사물을 그림이라고 했을떄, \
-                각각의 그림을 몇번에 위치시키는게 가장 보기 좋을 지 알려줘.예시) (flower,2) (bag,3)"
+                각각의 그림을 몇번에 위치시키는게 가장 보기 좋을 지 알려줘. 출력 형식은 (사물이름, 번호)를 한 쌍으로, 각 쌍은 공백으로 구분해서 출력해 줘. \
+                예시)\
+                    (flower,2) (bag,3)"
         print(prompt)
 
         content = prompt
@@ -97,8 +100,6 @@ class GPT():
         messages = []
         messages.append({"role": "user", "content":content})
 
-        if len(messages) > 4:
-            messages=messages[:-2]
 
         completion = openai.ChatCompletion.create(
                 model="gpt-4",
@@ -129,7 +130,7 @@ class GPT():
 
 
     def instruction_to_dict(self, instruction):
-        instruction = "(apple,1) (butterfly,2)"
+        #instruction = "(apple,1) (butterfly,2)"
         #인풋이 words_list이고, 그것을 잘라서 사용 (apple, 1) (butterfly, 2)
         temp_list_before = instruction.split()
         temp_list_after = []
@@ -141,16 +142,26 @@ class GPT():
             self.pictures_dict[object] = position
         
         print(self.pictures_dict)
+        return self.pictures_dict
         
     def post_pictures(self, dict):
         #나중에 dict 참고
+        #프론트에서 하나 선택할 때마다 사물이름-사진주소를 짝지어서 받게 함.
         arr = ["black_bg.png", "car_mint.png", "car.png", "mint.png", "white_bg.png"]
+        '''
+        arr = []
+        sorted_dict = sorted(dict.items(), key=lambda x: x[1])
+        for element in sorted_dict:
+            arr.append(element[0])
+        
+        print("arr:", arr)
+        '''
         for i in range(len(arr)):
             pic = arr[i]
             print(pic)
             r = i // 3
             c = i % 3
-            col(pic, c * 600, r * 500)
+            col(pic, c * 800 + 150, r * 700 + 250)
 
 if __name__ == "__main__":
     gpt = GPT()
