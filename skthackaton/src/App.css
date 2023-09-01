@@ -171,3 +171,18 @@
   align-self: center;
   font-size: 2rem;
 }
+
+.login-google {
+  display: inherit;
+  position: relative;
+  width: 8%;
+  height: 5vh;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.login-google-text {
+  font-family: 'Roboto', sans-serif;
+  margin-left: 24px !important;
+  align-items: center;
+}
