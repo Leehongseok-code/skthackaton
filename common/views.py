@@ -35,8 +35,8 @@ def SignUpAPI(request):
 username = userdata.get('username') 
 raw_password = userdata.get('password') 
 '''
-        serializer = SignUpSerializer(data = userdata) 
-        if serializer.is_valid(raise_exception=True):
+    serializer = SignUpSerializer(data = userdata) 
+    if serializer.is_valid(raise_exception=True):
 #user = User.objects.create_user(username=username, password=raw_password) 
 #user.set_password(raw_password)
 #login(request, user) # 로그인 

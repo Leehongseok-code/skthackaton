@@ -1,5 +1,6 @@
 import openai
 from cv import col
+from transparent import transparent
 
 class GPT():
     def __init__(self):
@@ -154,7 +155,7 @@ class GPT():
         for element in sorted_dict:
             arr.append(element[0])
         
-        print("arr:", arr)
+        print("len arr:", len(arr))
         
         for i in range(len(arr)):
             pic = arr[i]
@@ -177,4 +178,5 @@ if __name__ == "__main__":
     gpt.instruction_to_dict(gpt.instruction_set)
     '''
     gpt.post_pictures({})
+    
     #gpt.post("", ["자동차", "꽃", "나비"])

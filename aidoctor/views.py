@@ -4,6 +4,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from gpt_post import GPT
 from dalle import DallE
+from transparent import transparent
+
 # Create your views here.
 
 
@@ -71,6 +73,6 @@ def get_instruction(request):
     print(picture_position_dict)
 
     gpt.post_pictures(picture_position_dict)
-    
+    #transparent()    
 
     return HttpResponse("collage success")
