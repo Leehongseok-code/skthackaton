@@ -43,7 +43,7 @@ function Collage() {
     }));
 
     axios
-        .post(`https://49.50.162.196:8000/aidoctor/collage/`, { selectedImages: transformedImages })
+        .post(`http://49.50.162.196:8000/aidoctor/collage/`, { selectedImages: transformedImages })
         .then((response) => {
           // 서버에서 받은 응답 데이터
           const serverImageInfo = response.data;

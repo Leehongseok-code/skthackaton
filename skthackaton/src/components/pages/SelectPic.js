@@ -40,7 +40,7 @@ function SelectPic() {
   const handleGeneratePic = () => {
     setLoading(true); // 로딩 상태 활성화
     axios
-      .post(`https://49.50.162.196:8000/aidoctor/${selectedNumber}/`)
+      .post(`http://49.50.162.196:8000/aidoctor/${selectedNumber}/`)
       .then((response) => {
         // 서버에서 받은 응답 데이터
         const serverImageInfo = response.data;
