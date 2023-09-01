@@ -12,7 +12,7 @@ function HeroSection() {
 
     return (
         <div className = 'hero-container'>
-            <img src="/image/bear.jpg"/>
+            <img src="/image/main-bg.png"/>
             {/* <video src="/videos/twinkle.mp4" autoPlay loop muted /> */}
             <h1>정서랑</h1>
             <p>자폐 아동을 위한 합리적인 미술 치료 서비스</p>
