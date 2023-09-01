@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { storage, db, ref, uploadBytes, getDownloadURL, collection, addDoc } from '../../firebase-config';
  // Firebase에서 가져온 설정 정보
+ import '../BoardWrite.css'
 
 function BoardWrite() {
   const [selectedFile, setSelectedFile] = useState(null);
