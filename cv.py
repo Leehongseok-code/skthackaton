@@ -6,6 +6,14 @@ import os.path
 import requests
 import urllib.request
 from urllib.request import Request, urlopen
+from PIL import Image
+
+def u2i(url):
+    response = requests.get(url, stream=True)
+    img = Image.open(response.raw)
+    print(img)
+    return img
+
 
 def url_to_image(url):
     req = Request(url, headers={'User-Agent': 'Chrome/66.0.3359.181'})
@@ -42,7 +50,8 @@ def col(src2_path, x, y):
     print("pic_path:", pic_path)
 
     #src2 = cv2.imread(pic_path) #로고파일 읽기
-    src2 = url_to_image(pic_path)
+    #src2 = url_to_image(pic_path)
+    src2 = u2i(pic_path)
     
     rows, cols, channels = src2.shape #로고파일 픽셀값 저장
     roi = src1[y:rows + y, x:cols + x] #로고파일 필셀값을 관심영역(ROI)으로 저장함.

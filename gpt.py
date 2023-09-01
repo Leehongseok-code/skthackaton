@@ -22,4 +22,4 @@ def gpt(content):
     return chat_response
 
 if __name__ == "__main__":
-    gpt("https://www.kkday.com/ko/blog/wp-content/uploads/Empire-State-Building_AShutterstock_421599727.jpg 이 이미지에 대해 설명해 줘.")
+    gpt("python으로 url을 입력받아서 이미지를 보여주고 시펑.")
