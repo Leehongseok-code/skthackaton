@@ -1,0 +1,46 @@
+[[redirects]]
+  from = "/proxy/1/*"
+  to = "http://49.50.162.196:8000/aidoctor/1/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy/2/*"
+  to = "http://49.50.162.196:8000/aidoctor/2/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy/3/*"
+  to = "http://49.50.162.196:8000/aidoctor/3/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy/4/*"
+  to = "http://49.50.162.196:8000/aidoctor/4/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy/5/*"
+  to = "http://49.50.162.196:8000/aidoctor/5/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy/6/*"
+  to = "http://49.50.162.196:8000/aidoctor/6/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/proxy/collage/*"
+  to = "http://49.50.162.196:8000/aidoctor/collage/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
