@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import '../../App.css';
 import Footer from '../Footer';
 
 function FAQ() {
   const [activeTab, setActiveTab] = useState(null);
+//   const [faqInfo, setFaqInfo] = useState([]); // 이미지 정보 상태
 
   const toggleTab = (index) => {
     if (activeTab === index) {
@@ -13,7 +15,28 @@ function FAQ() {
     }
   };
 
-  const faqData = [
+//   useEffect(() => {
+//     axios
+//       .post(`http://49.50.162.196:8000/aidoctor/`)
+//       .then((response) => {
+//         // 서버에서 받은 응답 데이터
+//         const serverFaqInfo = response.data;
+
+//         // 서버에서 받아온 이미지 정보를 현재 이미지 정보에 추가
+//         const updatedFaqInfo = serverFaqInfo.map((item) => ({
+//             question: item.picture_url,
+//             answer: item.word,
+//         }));
+
+//         // imageInfo 배열 업데이트
+//         setFaqInfo(updatedFaqInfo);
+//       })
+//       .catch((error) => {
+//         // 오류 발생 시의 처리
+//       })
+//   }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
+
+  const faqInfo = [
     {
       question: 'When will my order arrive?',
       answer: 'Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation.',
@@ -48,7 +71,7 @@ function FAQ() {
         <br></br><br></br><br></br>
         <h2 className="text-xl font-semibold text-vnet-blue mb-2">FAQ</h2><br></br>
         <ul className="flex flex-col">
-          {faqData.map((faq, index) => (
+          {faqInfo.map((faq, index) => (
             <li className="bg-white my-2 shadow-lg" key={index}>
               <h2
                 onClick={() => toggleTab(index)}
