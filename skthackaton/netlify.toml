@@ -44,3 +44,9 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+# Netlify 도메인 추가
+for = "/*"
+[headers.values]
+  Access-Control-Allow-Origin = "https://skthackaton.netlify.app/"
