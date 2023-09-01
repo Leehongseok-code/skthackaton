@@ -29,11 +29,10 @@ function Music() {
     <ProgressStepper steps={steps} activeStep={activeStep} />
     <div className="App-back">
       <br></br><br></br>
-      <br></br><br></br>
       <img className='mood' alt="mood" src='/image/smile.png' />
       <h1 className='h1'>오늘의 감정 키워드를 골라주세요!</h1>
       <br></br><br></br>
-      <br></br><br></br>
+      <br></br>
       <div className="mlist">
         <MList onSelectButton={setSelectedButton} selectedButton={selectedButton} />
       </div>
@@ -49,7 +48,6 @@ function Music() {
       </div>
       <br></br><br></br>
       <br></br><br></br>
-      <br></br>
       <Footer />
       </div>
     </>
