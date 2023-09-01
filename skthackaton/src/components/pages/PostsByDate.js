@@ -14,7 +14,8 @@ function PostsByDate() {
   }, [date]);
 
   return (
-    <div className="posts-by-date-container">
+    <div className='App-back'>
+      <div className="posts-by-date-container">
       <h1 className="bold-text">나만의 콜라주 역사를 확인해보세요! - {date}</h1>
       <MyCalendar />
       <ul>
@@ -25,7 +26,9 @@ function PostsByDate() {
           </li>
         ))}
       </ul>
+      </div>
     </div>
+    
   );
 }
 
