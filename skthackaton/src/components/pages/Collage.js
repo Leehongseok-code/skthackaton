@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
 import '../../App.css';
@@ -35,14 +35,15 @@ function Collage() {
     });
   };
 
-  const sendSelectPicData = () => {
+  //데이터 호출
+  useEffect(() => {
     const transformedImages = selectedImages.map((imageInfo) => ({
-      name: imageInfo.name,
-      path: imageInfo.path,
+      word: imageInfo.name,
+      picture_url: imageInfo.path,
     }));
 
     axios
-        .post(`http://192.168.133.17:8000/aidoctor/`, { selectedImages: transformedImages })
+        .post(`http://49.50.162.196:8000/aidoctor/collage/`, { selectedImages: transformedImages })
         .then((response) => {
           // 서버에서 받은 응답 데이터
           const serverImageInfo = response.data;
@@ -60,7 +61,7 @@ function Collage() {
         .catch((error) => {
           // 오류 발생 시의 처리
         });
-    };
+  }, []);
 
   return (
     <>
