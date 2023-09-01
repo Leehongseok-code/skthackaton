@@ -6,6 +6,9 @@ from gpt_post import GPT
 from dalle import DallE
 from transparent import transparent
 
+
+import urllib.parse
+
 # Create your views here.
 
 
@@ -41,6 +44,9 @@ def picture_selection(request, feeling):
 
 @api_view(["GET", "POST"])
 def get_instruction(request):
+    
+    selected_images = request.data.get('selectedImages')
+    
     instruction  = ""
     words = []
     pictures = []
@@ -51,9 +57,9 @@ def get_instruction(request):
     word_position_dict = {}
     #key-사진 url, value-위치
     picture_position_dict = {}
-    for data in request.data:
+    for data in selected_images:
         print(request.data, type(request.data))
-        print(request.data[0].get('word'))
+
         word = data.get('word')
         picture = data.get('picture_url')
 
@@ -72,7 +78,10 @@ def get_instruction(request):
     
     print(picture_position_dict)
 
-    gpt.post_pictures(picture_position_dict)
+    image_url = gpt.post_pictures(picture_position_dict)
     #transparent()    
 
-    return HttpResponse("collage success")
+
+    
+
+    return JsonResponse({"image_url":image_url})

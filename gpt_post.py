@@ -1,5 +1,5 @@
 import openai
-from cv import col
+from cv import col, set_a4
 from transparent import transparent
 
 class GPT():
@@ -92,6 +92,7 @@ class GPT():
             너는 뛰어난 그림치료사고 위에 있는 사진들을 가로 세로 3*2의 직사각형의 칸에 배치할거야. \
             각각의 칸을  왼쪽상단부터,왼쪽부터오른쪽으로 순서대로 1-6까지의 번호이라고 할때, 너가 고른 5개의 사물을 그림이라고 했을떄, \
                 각각의 그림을 몇번에 위치시키는게 가장 보기 좋을 지 알려줘. 출력 형식은 (사물이름, 번호)를 한 쌍으로, 각 쌍은 공백으로 구분해서 출력해 줘. \
+                다른 말은 절대 하지말고 다음 출력 형식만 반드시 지켜 줘.\
                 예시)\
                     (flower,2) (bag,3)"
         print(prompt)
@@ -156,13 +157,15 @@ class GPT():
             arr.append(element[0])
         
         print("len arr:", len(arr))
-        
+        set_a4()
+
         for i in range(len(arr)):
             pic = arr[i]
             print(pic)
             r = i // 3
             c = i % 3
-            col(pic, c * 800 + 150, r * 700 + 250)
+            image_url = col(pic, c * 800 + 150, r * 700 + 250)
+        return image_url
 
 if __name__ == "__main__":
     gpt = GPT()
