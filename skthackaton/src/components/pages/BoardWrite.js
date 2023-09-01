@@ -1,7 +1,6 @@
-// src/components/BoardWrite.js
-
 import React, { useState } from 'react';
-import '../BoardWrite.css';
+import { storage, db, ref, uploadBytes, getDownloadURL, collection, addDoc } from '../../firebase-config';
+ // Firebase에서 가져온 설정 정보
 
 function BoardWrite() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -19,26 +18,30 @@ function BoardWrite() {
       return;
     }
 
-    const formData = new FormData();
-    formData.append('file', selectedFile);
+    // Firebase Storage에 파일 업로드
+    const storageRef = ref(storage, `uploads/${selectedFile.name}`);
+    const uploadTask = uploadBytes(storageRef, selectedFile);
 
     try {
-      const response = await fetch('/upload', {
-        method: 'POST',
-        body: formData,
-      });
+      await uploadTask;
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Uploaded file URL:', data);
-        // Handle the response data here
-      } else {
-        console.error('Upload failed:', response.statusText);
-        // Handle error here
-      }
+      // Firebase Storage에 업로드된 파일의 다운로드 URL 가져오기
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // Firebase Firestore에 게시글 저장
+      const postRef = collection(db, 'posts'); // Firestore 컬렉션
+      const newPostData = {
+        title: newPost.title,
+        content: newPost.content,
+        imageUrl: downloadURL, // 이미지 URL 저장
+      };
+      await addDoc(postRef, newPostData);
+
+      console.log('Uploaded file URL:', downloadURL);
+      // 게시글이 성공적으로 생성된 경우 처리
     } catch (error) {
       console.error('Upload error:', error);
-      // Handle error here
+      // 업로드 중 오류 발생 시 처리
     }
   };
 
@@ -60,7 +63,7 @@ function BoardWrite() {
             rows={6}
           />
           <input type="file" name="file" onChange={handleFileChange} />
-          <div className="submit-button-container"> {/* 새로운 div 추가 */}
+          <div className="submit-button-container">
             <input type="submit" value="게시글 작성" />
           </div>
         </form>
