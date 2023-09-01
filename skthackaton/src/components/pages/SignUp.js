@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
+import { auth } from "../../firebase-config";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import axios from 'axios';
 import '../../App.css';
 import Footer from '../Footer';
 
+
 const SignUp = () => {
+  const [userData, setUserData] = useState(null);
+
+  function handleGoogleLogin() {
+    const provider = new GoogleAuthProvider(); // provider 구글 설정
+    signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
+      .then((data) => {
+        setUserData(data.user); // user data 설정
+        console.log(data); // console에 UserCredentialImpl 출력
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   const [text, setText] = useState("서버 테스트");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,13 +60,6 @@ const SignUp = () => {
 
   return (
     <>
-    {/*
-      This example requires updating your template:
-      ```
-      <html class="h-full bg-white">
-      <body class="h-full">
-      ```
-    */}
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
     <br></br><br></br><br></br>
     <br></br><br></br><br></br>
@@ -60,7 +70,7 @@ const SignUp = () => {
           alt="Your Company"
         />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Coinicorn<br></br>{text}
+          정서랑<br></br>{text}
         </h2>
       </div>
 
@@ -108,9 +118,15 @@ const SignUp = () => {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-2"
             >
               로그인
+            </button>
+            <button
+              onClick={handleGoogleLogin}
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              구글로 로그인하기
             </button>
           </div>
         </form>
@@ -121,6 +137,13 @@ const SignUp = () => {
             회원가입하기
           </a>
         </p>
+      </div>
+    </div>
+    <div>
+      <div>
+        {userData
+          ? "당신의 이름은 : " + userData.displayName
+          : "로그인 버튼을 눌러주세요 :)"}
       </div>
     </div>
     <br></br><br></br><br></br>
