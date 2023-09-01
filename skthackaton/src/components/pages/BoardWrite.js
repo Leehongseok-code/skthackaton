@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { storage, db, ref, uploadBytes, getDownloadURL, collection, addDoc,serverTimestamp } from '../../firebase-config';
  // Firebase에서 가져온 설정 정보
  import { getAuth, onAuthStateChanged } from 'firebase/auth';
+ import { useNavigate } from 'react-router-dom';
  import '../BoardWrite.css';
 
 function BoardWrite() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [newPost, setNewPost] = useState({ title: '', content: '' });
+  const [userName, setUserName] = useState('');
+
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -42,12 +46,16 @@ function BoardWrite() {
         content: newPost.content,
         imageUrl: downloadURL, // 이미지 URL 저장
         authorUID: userUID, // 사용자 UID 저장
+        authorName: userName, // 사용자 이름 저장
         createdTimestamp: serverTimestamp(), // 현재 시간 저장
-      };
+      };      
       await addDoc(postRef, newPostData);
 
-      console.log('Uploaded file URL:', downloadURL);
       // 게시글이 성공적으로 생성된 경우 처리
+      console.log('Uploaded file URL:', downloadURL);
+
+      navigate('/board');
+
     } catch (error) {
       console.error('Upload error:', error);
       // 업로드 중 오류 발생 시 처리
@@ -59,14 +67,17 @@ function BoardWrite() {
     let userUID = null;
 
     onAuthStateChanged(auth, (user) => {
-        if (user) {
-          // 사용자가 로그인한 경우
-          userUID = user.uid;
-        } else {
-          // 사용자가 로그아웃한 경우 또는 로그인하지 않은 경우
-          userUID = null;
-        }
-      });
+      if (user) {
+        // 사용자가 로그인한 경우
+        userUID = user.uid;
+        setUserName(user.displayName || ''); // 사용자 닉네임
+      } else {
+        // 사용자가 로그아웃한 경우 또는 로그인하지 않은 경우
+        userUID = null;
+        setUserName('');
+      }
+    });
+    
 
 
   
