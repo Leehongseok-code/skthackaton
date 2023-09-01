@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase-config";
 import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import axios from 'axios';
@@ -9,12 +10,15 @@ import Footer from '../Footer';
 const SignUp = () => {
   const [userData, setUserData] = useState(null);
 
+  const navigate = useNavigate();
+
   function handleGoogleLogin() {
     const provider = new GoogleAuthProvider(); // provider 구글 설정
     signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
       .then((data) => {
         setUserData(data.user); // user data 설정
         console.log(data); // console에 UserCredentialImpl 출력
+        navigate('/');
       })
       .catch((err) => {
         console.log(err);
@@ -41,6 +45,7 @@ const SignUp = () => {
       const user = userCredential.user;
       setUserData(user);
       console.log(user);
+      navigate('/');
     } catch (error) {
       console.error(error);
     }
