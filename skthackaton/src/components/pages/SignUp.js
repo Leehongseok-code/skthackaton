@@ -122,7 +122,7 @@ const SignUp = () => {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           아직 회원이 아니신가요?{'   '}
-          <a href="#" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">
+          <a href="/register" className="font-semibold leading-6 text-blue-600 hover:text-blue-500">
             &nbsp;회원가입하기
           </a>
         </p>

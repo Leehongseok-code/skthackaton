@@ -9,6 +9,7 @@ import Music from './components/pages/Music';
 import SelectPic from './components/pages/SelectPic';
 import Collage from './components/pages/Collage';
 import SignUp from './components/pages/SignUp';
+import Register from './components/pages/Register';
 import FAQ from './components/pages/FAQ';
 import MList from './components/MList'
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/selectpic" element={<SelectPic />} />
         <Route path="/collage" element={<Collage />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/mlist" element={<MList />} />
         <Route path="/mplayer" element={<MPlayer />} />
         <Route path="/stepperwithcontent" element={<StepperWithContent />} />
