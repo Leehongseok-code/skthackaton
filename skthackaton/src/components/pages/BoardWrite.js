@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { storage, db, ref, uploadBytes, getDownloadURL, collection, addDoc } from '../../firebase-config';
+import { storage, db, ref, uploadBytes, getDownloadURL, collection, addDoc,serverTimestamp } from '../../firebase-config';
  // Firebase에서 가져온 설정 정보
- import '../BoardWrite.css'
+ import { getAuth, onAuthStateChanged } from 'firebase/auth';
+ import '../BoardWrite.css';
 
 function BoardWrite() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -19,6 +20,11 @@ function BoardWrite() {
       return;
     }
 
+    if (!userUID) {
+        alert("Please log in to create a post.");
+        return;
+      }
+
     // Firebase Storage에 파일 업로드
     const storageRef = ref(storage, `uploads/${selectedFile.name}`);
     const uploadTask = uploadBytes(storageRef, selectedFile);
@@ -35,6 +41,8 @@ function BoardWrite() {
         title: newPost.title,
         content: newPost.content,
         imageUrl: downloadURL, // 이미지 URL 저장
+        authorUID: userUID, // 사용자 UID 저장
+        createdTimestamp: serverTimestamp(), // 현재 시간 저장
       };
       await addDoc(postRef, newPostData);
 
@@ -44,7 +52,24 @@ function BoardWrite() {
       console.error('Upload error:', error);
       // 업로드 중 오류 발생 시 처리
     }
+
+
   };
+    const auth = getAuth();
+    let userUID = null;
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // 사용자가 로그인한 경우
+          userUID = user.uid;
+        } else {
+          // 사용자가 로그아웃한 경우 또는 로그인하지 않은 경우
+          userUID = null;
+        }
+      });
+
+
+  
 
   return (
     <div className='App-back'>
