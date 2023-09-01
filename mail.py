@@ -1,4 +1,4 @@
-from blockchain.models import CoinNews
+from gptanswer import *
 
 
 STYLES = '''

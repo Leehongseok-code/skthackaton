@@ -1,6 +1,5 @@
-from blockchain.models import CoinNews
+from gptanswer import *
 
-news= CoinNews.objects.all()
 
 STYLES = '''
 <style>

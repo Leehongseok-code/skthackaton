@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import date
 from mail import MAIL_FORMAT, STYLES
-from news_scrap import get_news_table
+from gptanswer import *
 
 def NewsLetter(email_address=""):
     if email_address == "":
