@@ -47,7 +47,7 @@ function Footer() {
       </section>
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
-          <div class='footer-link-items'>
+          {/* <div class='footer-link-items'>
             <h2>About Us</h2>
             <Link to='../Services'>How it works</Link>
             <Link to='../News'>News</Link>
@@ -58,8 +58,8 @@ function Footer() {
             <Link to='https://www.instagram.com/likelion_konkuk.univ/'>Instagram</Link>
             <Link to='https://www.facebook.com/likelionkonkuk/?locale=ko_KR'>Facebook</Link>
             <Link to='https://www.youtube.com/@likelion.official'>Youtube</Link>
-            {/* <Link to='/'>Twitter</Link> */}
-          </div>
+            
+          </div> */}
         </div>
       </div>
       <section class='social-media'>
