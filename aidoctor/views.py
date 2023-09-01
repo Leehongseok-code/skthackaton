@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from gpt_post import GPT
 from dalle import DallE
 from transparent import transparent
-
+from faq import get_faq
 
 import urllib.parse
 
@@ -81,7 +81,9 @@ def get_instruction(request):
     image_url = gpt.post_pictures(picture_position_dict)
     #transparent()    
 
-
-    
-
     return JsonResponse({"image_url":image_url})
+
+
+@api_view(["GET", "POST"])
+def faq(request):
+    return Response(get_faq())

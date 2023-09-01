@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.index),
     path('<int:feeling>/', views.picture_selection),
     path('collage/', views.get_instruction),
+    path('faq/', views.faq),
 ]
