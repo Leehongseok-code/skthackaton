@@ -50,7 +50,7 @@ function Collage() {
           // 서버에서 받아온 이미지 정보를 콜라주에 넣기
           const collageImage = (
             <div>
-              <img src={serverImageInfo} alt="Collage" />
+              <img className='image-collage' src={serverImageInfo} alt="Collage" />
             </div>
           );
 
@@ -85,6 +85,7 @@ function Collage() {
           <br></br><br></br><br></br>
           <div>
             {/* 콜라주 이미지 */}
+            {/* <img className='image-collage' src='/image/a4size.jpg' alt="Collage" /> */}
             {collageInfo}
           </div>
         </div>
