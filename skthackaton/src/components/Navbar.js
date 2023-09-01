@@ -86,9 +86,9 @@ function Navbar() {
               <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className="nav-item">
                   <Link
-                    to="/boardwrite"
-                    className={`nav-links ${activeLink === 'boardwrite' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('boardwrite')}
+                    to="/board"
+                    className={`nav-links ${activeLink === 'board' ? 'active' : ''}`}
+                    onClick={() => handleLinkClick('board')}
                   >
                     게시판
                   </Link>
