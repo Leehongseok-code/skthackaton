@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import axios from "axios";
 import '../../App.css';
 import Footer from '../Footer';
 import ProgressStepper from '../ProgressStepper';
@@ -12,6 +13,8 @@ function Collage() {
 
   const location = useLocation();
   const selectedImages = location.state?.selectedImages || [];
+
+  const [collageInfo, setCollageInfo] = useState([]); // 콜라주 이미지
 
   console.log(selectedImages); // selectedImages 배열 출력
 
@@ -32,6 +35,33 @@ function Collage() {
     });
   };
 
+  const sendSelectPicData = () => {
+    const transformedImages = selectedImages.map((imageInfo) => ({
+      name: imageInfo.name,
+      path: imageInfo.path,
+    }));
+
+    axios
+        .post(`http://192.168.133.17:8000/aidoctor/`, { selectedImages: transformedImages })
+        .then((response) => {
+          // 서버에서 받은 응답 데이터
+          const serverImageInfo = response.data;
+
+          // 서버에서 받아온 이미지 정보를 콜라주에 넣기
+          const collageImage = (
+            <div>
+              <img src={serverImageInfo} alt="Collage" />
+            </div>
+          );
+
+          // 콜라주 이미지를 collageInfo 상태에 설정
+          setCollageInfo(collageImage);
+        })
+        .catch((error) => {
+          // 오류 발생 시의 처리
+        });
+    };
+
   return (
     <>
       <ProgressStepper steps={steps} activeStep={activeStep} />
@@ -44,7 +74,7 @@ function Collage() {
               imageInfo && (
                 <div key={index}>
                   <img className="image-total" src={imageInfo.path} alt={imageInfo.name} />
-                  <p>{imageInfo.name}</p>
+                  <p className='p'>{imageInfo.name}</p>
                 </div>
               )
             ))}
@@ -52,6 +82,11 @@ function Collage() {
           <button className="download-all-btn" onClick={handleDownloadAll}>
             모든 이미지 다운로드
           </button>
+          <br></br><br></br><br></br>
+          <div>
+            {/* 콜라주 이미지 */}
+            {collageInfo}
+          </div>
         </div>
       </div>
       <Footer />
