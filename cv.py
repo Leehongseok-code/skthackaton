@@ -4,18 +4,35 @@ import cv2
 import numpy as np
 import os.path 
 import requests
+import urllib.request
+from urllib.request import Request, urlopen
+
+def url_to_image(url):
+    req = Request(url, headers={'User-Agent': 'Chrome/66.0.3359.181'})
+    webpage = urlopen(req).read()
+    image = np.asarray(bytearray(webpage), dtype='uint8')
+    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+
+    return image
 
 
 def get_image_from_url(url):
-    image_nparray = np.asarray(bytearray(requests.get(url).content), dtype=np.uint8)
-    print("nparray:", image_nparray)
-    image = cv2.imdecode(image_nparray, cv2.IMREAD_COLOR)
-    print(image.shape)
-    return image
+    with urllib.request.urlopen(url) as resp:
+
+        # read image as an numpy array
+        image = np.asarray(bytearray(resp.read()), dtype="uint8")
+        
+        # use imdecode function
+        image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+    
+        # display image
+        cv2.imwrite("result.jpg", image)
+
 
 def col(src2_path, x, y):
     
     src1 = cv2.imread('./test_image/A4.png') #사과파일 읽기
+    print("src1:", type(src1))
 
     '''
     org_path = os.path.join("./test_image", "A4.png")
@@ -25,7 +42,7 @@ def col(src2_path, x, y):
     print("pic_path:", pic_path)
 
     #src2 = cv2.imread(pic_path) #로고파일 읽기
-    src2 = get_image_from_url(pic_path)
+    src2 = url_to_image(pic_path)
     
     rows, cols, channels = src2.shape #로고파일 픽셀값 저장
     roi = src1[y:rows + y, x:cols + x] #로고파일 필셀값을 관심영역(ROI)으로 저장함.

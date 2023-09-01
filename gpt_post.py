@@ -147,15 +147,15 @@ class GPT():
     def post_pictures(self, dict):
         #나중에 dict 참고
         #프론트에서 하나 선택할 때마다 사물이름-사진주소를 짝지어서 받게 함.
-        arr = ["black_bg.png", "car_mint.png", "car.png", "mint.png", "white_bg.png"]
-        '''
+        #arr = ["black_bg.png", "car_mint.png", "car.png", "mint.png", "white_bg.png"]
+        
         arr = []
         sorted_dict = sorted(dict.items(), key=lambda x: x[1])
         for element in sorted_dict:
             arr.append(element[0])
         
         print("arr:", arr)
-        '''
+        
         for i in range(len(arr)):
             pic = arr[i]
             print(pic)

@@ -21,6 +21,7 @@ def index(request):
 @api_view(["GET", "POST"])
 def picture_selection(request, feeling):
     feeling_word = feeling_dict[feeling]
+    print(feeling_word)
     #단어 쉼표로 구분해서 받기
     selected_str = gpt.select_pictures(feeling_word)
     gpt.words_to_list(selected_str)

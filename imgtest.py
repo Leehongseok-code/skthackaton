@@ -1,0 +1,3 @@
+import urllib.request
+url = "https://oaidalleapiprodscus.blob.core.windows.net/private/org-8wcvBxN3H7xshG4VAAgkNEyu/user-c319FLewk0K5U8iaq46OPLuk/img-0waLHP981VJQEPvDPcvMFNZL.png?st=2023-08-31T01%3A42%3A45Z&se=2023-08-31T03%3A42%3A45Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-08-31T00%3A35%3A54Z&ske=2023-09-01T00%3A35%3A54Z&sks=b&skv=2021-08-06&sig=aFaUBI1igGhRJQkyzE5yokJnNYCMR89dT4G8FJtOje4%3D"
+urllib.request.urlretrieve(url, 'test.png')
