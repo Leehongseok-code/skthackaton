@@ -119,7 +119,7 @@ const SignUp = () => {
                 </button>
                 <button
                   onClick={handleGoogleLogin}
-                  className="relate w-full justify-center rounded-md bg-white py-1 text-m font-semibold leading-6 text-gray-500 shadow-sm hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  className="relate w-full justify-center rounded-md bg-white py-1 text-m font-semibold leading-6 text-gray-500 shadow-lg hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 >
                   <img className='login-google' alt="google" src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/120px-Google_%22G%22_Logo.svg.png' />
                   <span className="login-google-text">Google 계정으로 로그인</span>
