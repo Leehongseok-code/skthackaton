@@ -15,6 +15,7 @@ import MPlayer from './components/MPlayer';
 import { StepperWithContent } from './components/StepperWithContent';
 import ProgressStepper from './components/ProgressStepper';
 import CustomAudioPlayer from './components/CustomAudioPlayer';
+import BoardWrite from './components/pages/BoardWrite';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/board" element={<Board />} />
+        <Route path="/boardwrite" element={<BoardWrite />} />
         <Route path="/Scraps" element={<Scraps />} />
         <Route path="/Music" element={<Music />} />
         <Route path="/selectpic" element={<SelectPic />} />
