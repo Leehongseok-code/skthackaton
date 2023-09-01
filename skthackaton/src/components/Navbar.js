@@ -65,9 +65,9 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to="/scraps"
-                    className={`nav-links ${activeLink === 'scraps' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('scraps')}
+                    to="/postbydate"
+                    className={`nav-links ${activeLink === 'postbydate' ? 'active' : ''}`}
+                    onClick={() => handleLinkClick('postbydate')}
                   >
                     모아보기
                   </Link>

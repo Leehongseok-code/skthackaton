@@ -1,0 +1,22 @@
+.react-calendar {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  /* 달력 날짜 스타일 */
+  .react-calendar .react-calendar__tile {
+    font-size: 16px;
+  }
+  
+  /* 선택된 날짜 스타일 */
+  .react-calendar .react-calendar__tile--active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  .calendar-container {
+    /*width: 600px;  원하는 가로 크기로 조절 */
+    /*height: 300px;  원하는 세로 크기로 조절 */
+    margin: 0 auto; /* 화면 가운데로 정렬 */
+  }

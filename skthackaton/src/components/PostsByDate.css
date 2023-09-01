@@ -1,0 +1,14 @@
+/* PostsByDate 컴포넌트의 스타일 */
+.posts-by-date-container {
+    text-align: center; /* 텍스트를 가운데 정렬합니다. */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .bold-text {
+    font-weight: bold; /* 텍스트를 볼드 처리합니다. */
+  }
+  

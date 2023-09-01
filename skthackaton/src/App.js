@@ -16,6 +16,7 @@ import { StepperWithContent } from './components/StepperWithContent';
 import ProgressStepper from './components/ProgressStepper';
 import CustomAudioPlayer from './components/CustomAudioPlayer';
 import BoardWrite from './components/pages/BoardWrite';
+import PostsByDate from './components/pages/PostsByDate';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/board" element={<Board />} />
         <Route path="/boardwrite" element={<BoardWrite />} />
         <Route path="/Scraps" element={<Scraps />} />
+        <Route path="/postbydate" element={<PostsByDate />} />
         <Route path="/Music" element={<Music />} />
         <Route path="/selectpic" element={<SelectPic />} />
         <Route path="/collage" element={<Collage />} />
