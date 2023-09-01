@@ -28,3 +28,7 @@ def NewsLetter(email_address=""):
         smtp.sendmail('lhs27733182@gmail.com', email_address, msg.as_string())
 
     print("mail")
+
+
+if __name__ == "__main__":
+    NewsLetter("504dragon@naver.com")

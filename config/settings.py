@@ -30,21 +30,24 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://a42b-210-106-232-52.ngrok-free.app', 'http://localhost:3000', 'http://115.85.183.115:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://a42b-210-106-232-52.ngrok-free.app', 'http://localhost:3000', 'http://115.85.183.115:3000', 'https://skthackaton.netlify.app']
 
 CORS_ALLOW_HEADERS = list(default_headers) + ["accept", "authorization", "content-type", "user-agent", "x-csrftocken", "x-requested-with", "ngrok-skip-browser-warning", "Access-Control-Allow-Origin"]
 
 CORS_ALLOWED_ORIGINS = [
     # 허용할 리액트 앱의 URL을 여기에 추가합니다.
     'http://localhost:3000',  # 예시 URL
-    'http://115.85.183.115:3000'
+    'http://115.85.183.115:3000',
+    'https://skthackaton.netlify.app'
 ]
 
+CORS_ALLOW_CREDENTIALS= True
 
 # Application definition
 
 INSTALLED_APPS = [
     'corsheaders', # CORS 관련 추가'
+    'sslserver',
 
 
     'django.contrib.admin',
