@@ -28,57 +28,62 @@ function SelectPic() {
   const [selectedImages, setSelectedImages] = useState(Array(totalSteps).fill(null)); // 각 단계별 선택된 이미지 인덱스
   const [showCompleteButton, setShowCompleteButton] = useState(false);
 
-  // const [imageInfo, setImageInfo] = useState([]); // 이미지 정보 상태
+  const [imageInfo, setImageInfo] = useState([]); // 이미지 정보 상태
+  const [loading, setLoading] = useState(false); // 로딩 상태 추가
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   handleGeneratePic(); // 컴포넌트가 마운트될 때 이미지 정보를 가져옴
-  // }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
+  useEffect(() => {
+    handleGeneratePic(); // 컴포넌트가 마운트될 때 이미지 정보를 가져옴
+  }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
 
-  // const handleGeneratePic = () => {
-  //   axios
-  //       .post(`http://127.0.0.1:8000/aidoctor/${selectedNumber}/`)
-  //       .then((response) => {
-  //         // 서버에서 받은 응답 데이터
-  //         const serverImageInfo = response.data;
+  const handleGeneratePic = () => {
+    setLoading(true); // 로딩 상태 활성화
+    axios
+      .post(`http://192.168.133.17:8000/aidoctor/${selectedNumber}/`)
+      .then((response) => {
+        // 서버에서 받은 응답 데이터
+        const serverImageInfo = response.data;
 
-  //         // 서버에서 받아온 이미지 정보를 현재 이미지 정보에 추가
-  //         const updatedImageInfo = serverImageInfo.map(item => ({
-  //           path: item.picture_url,
-  //           name: item.word
-  //         }));
+        // 서버에서 받아온 이미지 정보를 현재 이미지 정보에 추가
+        const updatedImageInfo = serverImageInfo.map((item) => ({
+          path: item.picture_url,
+          name: item.word,
+        }));
 
-  //         // imageInfo 배열 업데이트
-  //         setImageInfo(updatedImageInfo);
-  //       })
-  //       .catch((error) => {
-  //         // 오류 발생 시의 처리
-  //       });
-  //   };
+        // imageInfo 배열 업데이트
+        setImageInfo(updatedImageInfo);
+      })
+      .catch((error) => {
+        // 오류 발생 시의 처리
+      })
+      .finally(() => {
+        setLoading(false); // 로딩 상태 비활성화
+      });
+  };
 
-  const imageInfo  = [
-    { path: '/image/ex1.png', name: '강아지' },
-    { path: '/image/ex2.png', name: '고양이' },
-    { path: '/image/ex3.png', name: '냐옹이' },
-    { path: '/image/ex4.png', name: '뽀로로' },
-    { path: '/image/ex5.png', name: 'ex5' },
-    { path: '/image/ex6.png', name: 'ex6' },
-    { path: '/image/ex7.png', name: 'ex7' },
-    { path: '/image/ex8.png', name: 'ex8' },
-    { path: '/image/ex2.png', name: '이미지9' },
-    { path: '/image/ex1.png', name: '이미지10' },
-    { path: '/image/ex4.png', name: '이미지11' },
-    { path: '/image/ex3.png', name: '이미지12' },
-    { path: '/image/ex8.png', name: '이미지13' },
-    { path: '/image/ex7.png', name: '이미지14' },
-    { path: '/image/ex6.png', name: '이미지15' },
-    { path: '/image/ex5.png', name: '이미지16' },
-    { path: '/image/ex4.png', name: '이미지17' },
-    { path: '/image/ex3.png', name: '이미지18' },
-    { path: '/image/ex2.png', name: '이미지19' },
-    { path: '/image/ex1.png', name: '이미지20' }
-  ];
+  // const imageInfo  = [
+  //   { path: '/image/ex1.png', name: '강아지' },
+  //   { path: '/image/ex2.png', name: '고양이' },
+  //   { path: '/image/ex3.png', name: '냐옹이' },
+  //   { path: '/image/ex4.png', name: '뽀로로' },
+  //   { path: '/image/ex5.png', name: 'ex5' },
+  //   { path: '/image/ex6.png', name: 'ex6' },
+  //   { path: '/image/ex7.png', name: 'ex7' },
+  //   { path: '/image/ex8.png', name: 'ex8' },
+  //   { path: '/image/ex2.png', name: '이미지9' },
+  //   { path: '/image/ex1.png', name: '이미지10' },
+  //   { path: '/image/ex4.png', name: '이미지11' },
+  //   { path: '/image/ex3.png', name: '이미지12' },
+  //   { path: '/image/ex8.png', name: '이미지13' },
+  //   { path: '/image/ex7.png', name: '이미지14' },
+  //   { path: '/image/ex6.png', name: '이미지15' },
+  //   { path: '/image/ex5.png', name: '이미지16' },
+  //   { path: '/image/ex4.png', name: '이미지17' },
+  //   { path: '/image/ex3.png', name: '이미지18' },
+  //   { path: '/image/ex2.png', name: '이미지19' },
+  //   { path: '/image/ex1.png', name: '이미지20' }
+  // ];
 
   const handleImageClick = (index) => {
     if (selectedStep < totalSteps) {
@@ -141,18 +146,29 @@ function SelectPic() {
                 이미지를 클릭하거나 직접 말해보자!
               </p><br />
               {/* 이미지 선택 영역 */}
-              {imageInfo.slice(selectedStep * imagesPerStep, (selectedStep + 1) * imagesPerStep).map((info, index) => (
-                <div key={index} className="paint1">
+              {loading ? (
+              // 로딩 중일 때 로딩 표시 보여주기
+              <div>
+                <br></br><br></br><br></br><br></br><br></br><br></br>
+                <br></br><br></br><br></br>
+                Loading...
+                <br></br><br></br><br></br><br></br><br></br><br></br>
+                <br></br><br></br><br></br><br></br>
+              </div>
+              ) : (
+                imageInfo.slice(selectedStep * imagesPerStep, (selectedStep + 1) * imagesPerStep).map((info, index) => (
+                  <div key={index} className='paint1'>
                     <img
-                      className="img"
+                      className='img'
                       alt={`num${selectedStep * imagesPerStep + index + 1}`}
                       src={info.path}
                       onClick={() => handleImageClick(index)}
                     />
-                    <div className="text_b">{info.name}</div>
-                  <br></br>
-                </div>
-              ))}
+                    <div className='text_b'>{info.name}</div>
+                    <br></br>
+                  </div>
+                ))
+              )}
               <div className="step">{selectedStep+1}/5</div><br></br>
               {showCompleteButton && (
                 <button
