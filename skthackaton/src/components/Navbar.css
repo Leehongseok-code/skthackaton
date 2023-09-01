@@ -67,6 +67,15 @@
     color: #504C36;
     font-weight: 600;
   }
+
+  .nav-username {
+    font-weight: 600;
+  }
+
+  .nav-welcome {
+    font-weight: 400;
+    color: #52514e;
+  }
   
   .fa-bars {
     color: #000;

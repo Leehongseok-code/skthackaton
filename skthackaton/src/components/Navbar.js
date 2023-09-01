@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { auth, signOut } from "../firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
 import {Button} from './Button';
 import './Navbar.css';
 
@@ -7,6 +9,8 @@ function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
     const [activeLink, setActiveLink] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false); // 로그인 상태
+    const [userName, setUserName] = useState(''); // 사용자 이름
     
     const navigate = useNavigate(); // useHistory 훅 사용
 
@@ -26,6 +30,19 @@ function Navbar() {
     // SIGNUP버튼이 사이즈가 줄어들면 없어지도록 함
     useEffect(() => {
         showButton();
+
+        // Firebase Authentication의 로그인 상태를 관찰하고 사용자 이름을 가져옴
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setLoggedIn(true);
+            setUserName(user.displayName || ''); // 사용자 이름 가져오기
+          } else {
+            setLoggedIn(false);
+            setUserName('');
+          }
+        });
+
+        return () => unsubscribe();
     }, []);
 
     // 링크 클릭 시 activeLink 업데이트
@@ -38,7 +55,20 @@ function Navbar() {
 
     // 로그인 버튼 클릭 시 이벤트 핸들러
     const handleLoginButtonClick = () => {
-      navigate("/sign-up"); // 페이지 이동
+      if (loggedIn) {
+        signOut(auth) // Firebase Authentication에서 로그아웃
+          .then(() => {
+            // 로그아웃 성공 시 수행할 작업 (예: 상태 업데이트 등)
+            setLoggedIn(false);
+            setUserName('');
+          })
+          .catch((error) => {
+            // 로그아웃 실패 시 처리
+            console.error('로그아웃 실패:', error);
+          });
+      } else {
+        navigate("/sign-up");
+      }
     };
 
 
@@ -73,13 +103,21 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  {/* 로그인 버튼 클릭 시 이벤트 핸들러 호출 */}
                   <button className={`nav-links-mobile ${activeLink === 'sign-up' ? 'active' : ''}`} onClick={handleLoginButtonClick}>
-                    로그인
+                    {loggedIn ? '로그아웃' : '로그인'}
                   </button>
                 </li>
               </ul>
-              {button && <button className="nav-links" onClick={handleLoginButtonClick}>로그인</button>}
+              {loggedIn && (
+                <div className="nav-username">{userName}
+                <span className='nav-welcome'>님 환영합니다.</span>&nbsp;&nbsp;
+                </div>
+              )}
+              {button && (
+                <button className="nav-links" onClick={handleLoginButtonClick}>
+                  {loggedIn ? '로그아웃' : '로그인'}
+                </button>
+              )}
             </div>
           </nav>
         </>
