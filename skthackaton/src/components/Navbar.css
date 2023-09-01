@@ -37,8 +37,6 @@
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    font-size: 16px;
-    margin-top: 5px;
     width: 60vw;
     justify-content: start;
     margin-left: 2rem;
@@ -52,6 +50,7 @@
     color: #6C6C6C;
     display: flex;
     align-items: center;
+    font-size: 16px;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
@@ -69,10 +68,12 @@
   }
 
   .nav-username {
+    font-size: 17px;
     font-weight: 600;
   }
 
   .nav-welcome {
+    font-size: 17px;
     font-weight: 400;
     color: #52514e;
   }
@@ -81,11 +82,8 @@
     color: #000;
   }
 
+
   .nav-links-mobile {
-    display: none;
-  }
-  
-  .nav-links-mobile:hover {
     display: none;
   }
   
@@ -139,7 +137,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      transform: translate(25%, 15%);
+      transform: translate(20%, 30%);
     }
   
     .menu-icon {
@@ -147,7 +145,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      transform: translate(-100%, 60%);
+      transform: translate(-100%, 50%);
       font-size: 1.3rem;
       cursor: pointer;
     }

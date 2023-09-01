@@ -9,6 +9,7 @@ import Music from './components/pages/Music';
 import SelectPic from './components/pages/SelectPic';
 import Collage from './components/pages/Collage';
 import SignUp from './components/pages/SignUp';
+import FAQ from './components/pages/FAQ';
 import MList from './components/MList'
 import './App.css';
 import MPlayer from './components/MPlayer';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/board" element={<Board />} />
         <Route path="/boardwrite" element={<BoardWrite />} />
         <Route path="/Scraps" element={<Scraps />} />
+        <Route path="/faq" element={<FAQ />} />
         <Route path="/postbydate" element={<PostsByDate />} />
         <Route path="/Music" element={<Music />} />
         <Route path="/selectpic" element={<SelectPic />} />

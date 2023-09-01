@@ -103,6 +103,15 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link
+                    to="/faq"
+                    className={`nav-links ${activeLink === 'faq' ? 'active' : ''}`}
+                    onClick={() => handleLinkClick('faq')}
+                  >
+                    FAQ
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <button className={`nav-links-mobile ${activeLink === 'sign-up' ? 'active' : ''}`} onClick={handleLoginButtonClick}>
                     {loggedIn ? '로그아웃' : '로그인'}
                   </button>
