@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { storage, db, ref, uploadBytes, getDownloadURL, collection, getDocs,serverTimestamp } from '../../firebase-config';
+import { storage, db, ref, doc, updateDoc, collection, getDocs,serverTimestamp } from '../../firebase-config';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import Footer from '../Footer';
@@ -23,14 +23,31 @@ function Board() {
     navigate('/boardwrite');
   };
 
+  // 게시물 상세 페이지로 이동할 때 조회수 업데이트
+  const navigateToBoardDetail = async (user, index) => {
+    try {
+      // 해당 게시물의 Firestore 문서 업데이트
+      const postRef = doc(db, 'posts', user.id); // 'id'는 게시물 문서의 고유 식별자
+      await updateDoc(postRef, { views: user.views + 1 });
+
+      // 게시물 상세 페이지로 이동
+      navigate(`/boarddetail/${index + 1}`, { state: { userData: user } });
+    } catch (error) {
+      console.error('Error updating views:', error);
+    }
+  };
+
   useEffect(() => {
     // Firebase Firestore에서 게시물 데이터 가져오기
     const fetchUserData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'posts')); // 'posts' 컬렉션의 문서들 가져오기
         const postsData = [];
+        
         querySnapshot.forEach((doc) => {
           const postData = doc.data();
+          postData.id = doc.id; // 게시물 문서 고유 ID 추가
+
           // Timestamp 객체를 문자열로 변환하여 사용
           const formattedTimestamp = format(postData.createdTimestamp.toDate(), 'yy/MM/dd HH:mm');
           postData.createdTimestamp = formattedTimestamp;
@@ -91,7 +108,7 @@ function Board() {
                       작성자
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      파일
+                      조회수
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                       작성시간
@@ -104,20 +121,21 @@ function Board() {
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p className="text-gray-900 whitespace-no-wrap">{index+1}</p>
                       </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
+                      onClick={() => navigateToBoardDetail(user, index)} // 클릭 시 상세 페이지로 이동 및 조회수 업데이트
+                      style={{ cursor: 'pointer' }} >
                         <div className="flex items-center">
-                          <Link to={`/boarddetail/${index + 1}`} state={{ userData: user }}>
-                            {user.title}
-                          </Link>
+                          <div className="flex-shrink-0 w-10 h-10">
+                            <img className="relative z-10 w-auto h-full" src={user.imageUrl} alt="postImg" />
+                          </div>
+                          <p className='mx-6'>{user.title}</p>
                         </div>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p className="text-gray-900 whitespace-no-wrap">{user.authorName}</p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <div className="flex-shrink-0 w-10 h-10">
-                          <img className="relative z-10 w-auto h-full rounded-full" src={user.imageUrl} alt="postImg" />
-                        </div>
+                        <p className="text-gray-900 whitespace-no-wrap">{user.views}</p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p className="text-gray-900 whitespace-no-wrap">{user.createdTimestamp}</p>

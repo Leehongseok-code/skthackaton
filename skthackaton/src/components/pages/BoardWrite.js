@@ -20,12 +20,12 @@ function BoardWrite() {
     event.preventDefault();
 
     if (!selectedFile) {
-      alert("Please select a file to upload.");
+      alert("업로드 할 파일을 선택해주세요");
       return;
     }
 
     if (!userUID) {
-        alert("Please log in to create a post.");
+        alert("로그인 후 게시물 작성이 가능합니다");
         return;
       }
 
@@ -47,6 +47,7 @@ function BoardWrite() {
         imageUrl: downloadURL, // 이미지 URL 저장
         authorUID: userUID, // 사용자 UID 저장
         authorName: userName, // 사용자 이름 저장
+        views: 0,
         createdTimestamp: serverTimestamp(), // 현재 시간 저장
       };      
       await addDoc(postRef, newPostData);
