@@ -4,8 +4,6 @@ import '../../App.css';
 import '../SelectPic.css';
 import '../StepButton.css';
 import { useLocation  , useNavigate } from 'react-router-dom';
-import Collage from './Collage';
-import { Button } from '../Button';
 import Footer from '../Footer';
 import MPlayer from '../MPlayer';
 import CustomAudioPlayer from '../CustomAudioPlayer';
@@ -48,7 +46,8 @@ function SelectPic() {
         // 서버에서 받아온 이미지 정보를 현재 이미지 정보에 추가
         const updatedImageInfo = serverImageInfo.map((item) => ({
           path: item.picture_url,
-          name: item.word,
+          name: item.kor,
+          eng: item.word
         }));
 
         // imageInfo 배열 업데이트
@@ -61,29 +60,6 @@ function SelectPic() {
         setLoading(false); // 로딩 상태 비활성화
       });
   };
-
-  // const imageInfo  = [
-  //   { path: '/image/ex1.png', name: '강아지' },
-  //   { path: '/image/ex2.png', name: '고양이' },
-  //   { path: '/image/ex3.png', name: '냐옹이' },
-  //   { path: '/image/ex4.png', name: '뽀로로' },
-  //   { path: '/image/ex5.png', name: 'ex5' },
-  //   { path: '/image/ex6.png', name: 'ex6' },
-  //   { path: '/image/ex7.png', name: 'ex7' },
-  //   { path: '/image/ex8.png', name: 'ex8' },
-  //   { path: '/image/ex2.png', name: '이미지9' },
-  //   { path: '/image/ex1.png', name: '이미지10' },
-  //   { path: '/image/ex4.png', name: '이미지11' },
-  //   { path: '/image/ex3.png', name: '이미지12' },
-  //   { path: '/image/ex8.png', name: '이미지13' },
-  //   { path: '/image/ex7.png', name: '이미지14' },
-  //   { path: '/image/ex6.png', name: '이미지15' },
-  //   { path: '/image/ex5.png', name: '이미지16' },
-  //   { path: '/image/ex4.png', name: '이미지17' },
-  //   { path: '/image/ex3.png', name: '이미지18' },
-  //   { path: '/image/ex2.png', name: '이미지19' },
-  //   { path: '/image/ex1.png', name: '이미지20' }
-  // ];
 
   const handleImageClick = (index) => {
     if (selectedStep < totalSteps) {
@@ -147,14 +123,12 @@ function SelectPic() {
               </p><br />
               {/* 이미지 선택 영역 */}
               {loading ? (
-              // 로딩 중일 때 로딩 표시 보여주기
-              <div>
-                <br></br><br></br><br></br><br></br><br></br><br></br>
-                <br></br><br></br><br></br>
-                Loading...
-                <br></br><br></br><br></br><br></br><br></br><br></br>
-                <br></br><br></br><br></br><br></br>
-              </div>
+                <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+                  <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                  <h2 className="text-center text-white text-xl font-semibold">로딩 중...</h2><br></br>
+                  <h2 className="text-center text-white text-xl font-semibold">Dalle2가 열심히 사진을 만들고 있어요!</h2><br></br>
+                  <p className="text-center text-white">This may take a few seconds, please don't close this page.</p>
+                </div>
               ) : (
                 imageInfo.slice(selectedStep * imagesPerStep, (selectedStep + 1) * imagesPerStep).map((info, index) => (
                   <div key={index} className='paint1'>
