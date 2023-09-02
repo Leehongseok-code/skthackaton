@@ -48,7 +48,7 @@ NEWS_TABLE_FORMAT = '''
 <table style="width: 100%; text-align: center; margin-bottom: 15px;">
     <thead>
         <tr>
-            <th style="border: 1px solid black; padding: 10px; color: darkblue;">{TYPE}</th>
+            <th style="border: 1px solid black; padding: 10px; color: darkblue;"></th>
         </tr>
     </thead>
     <tbody>
@@ -60,7 +60,7 @@ NEWS_TABLE_FORMAT = '''
 ARTICLE_FORMAT = '''
 <tr>
     <td style="border: 1px solid black; padding: 10px; color: black;">
-        <a href="{}" target="_blank" style="color: black;">{}</a>
+        {}
     </td>
 </tr>
 '''

@@ -15,7 +15,7 @@ def get_faq():
     k = "회원 가입을 했는데 뉴스레터가 안와요."
     l = "뉴스레터는 홈페이지 하단에 이메일란에 주소를 입력해주시면 전송됩니다."
    
-    qa = {"data":[{"qustion":a, "answer":b}, {"question":c, "answer":d},{"question":e,"answer":f},{"question":g,"answer":h},{"question":i, "answer":j},{"question":k,"answer":l}]}
+    qa = [{"qustion":a, "answer":b}, {"question":c, "answer":d},{"question":e,"answer":f},{"question":g,"answer":h},{"question":i, "answer":j},{"question":k,"answer":l}]
 
 
     print(qa)

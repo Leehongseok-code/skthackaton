@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from datetime import date
+from datetime import date, datetime
 from mail import MAIL_FORMAT, STYLES
 from news_scrap import get_news_table
 
