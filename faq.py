@@ -7,7 +7,7 @@ def get_faq():
     f = "네, 감정 선택 시 보호자가 랜덤으로 선택해도 괜찮습니다."
     g = "청각이 예민한 자녀라 음악 안나오게 하고 싶은데 어떻게 해야하나요?"
     h = "서비스 사용 전에 소리를 끄고 사용해주시길 바랍니다."
-    qa = {"data":[{"qustion":a, "answer":b}, {"question":c, "answer":d},{"question":e,"answer":f},{"question":g,"answer":h}]}
+    qa = [{"question":a, "answer":b}, {"question":c, "answer":d},{"question":e,"answer":f},{"question":g,"answer":h}]
 
     print(qa)
     return qa

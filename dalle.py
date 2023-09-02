@@ -40,9 +40,9 @@ class DallE():
 
     def variation(self):
         response = openai.Image.create_variation(
-        image=open("./test_image/back.png", "rb"),
+        image=open("./test_image/back2.png", "rb"),
         n=3,
-        size="256x256",
+        size="1024x1024",
         )
         image_url = response['data'][0]['url']
         print("최종:", image_url)
@@ -50,6 +50,6 @@ class DallE():
 
 if __name__ == "__main__":
     dalle = DallE()
-    dalle.generate(prompt = "a cute car with black background")
+    dalle.generate(prompt = "kids wallpaper style background with cute animal pattern")
     dalle.variation()
     #fix()

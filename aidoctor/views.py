@@ -30,12 +30,18 @@ def picture_selection(request, feeling):
     #단어 쉼표로 구분해서 받기
     selected_str = gpt.select_pictures(feeling_word)
     gpt.words_to_list(selected_str)
+
+    kor_selected_str = gpt.translate(selected_str)
+    gpt.kor_words_to_list(kor_selected_str)
     #for문 써서 딕셔너리 형태로 만들기 사물이름 - 사진 key-value로 전송
     
     answer = []
-    for word in gpt.words_list:
+    for i in range(len(gpt.words_list)):
+        word = gpt.words_list[i]
+        kor_word = gpt.kor_words_list[i]
         picture_dict = {}
         picture_dict["word"] = word 
+        picture_dict["kor"] = kor_word
         picture_dict["picture_url"] = dalle.generate(word)
         answer.append(picture_dict)
     print(answer)
