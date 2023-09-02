@@ -72,7 +72,7 @@ MAIL_FORMAT = '''
 {STYLE}
 <body>
     <div class="container">
-    <h1>오늘자 MoT</h1>
+    <h1>발달 장애인 부모 교육 및 상담 뉴스레터</h1>
     {NEWS}
     </div>
 </body>

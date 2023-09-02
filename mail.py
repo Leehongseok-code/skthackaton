@@ -1,5 +1,3 @@
-from gptanswer import *
-
 
 STYLES = '''
 <style>
@@ -75,7 +73,7 @@ MAIL_FORMAT = '''
 {STYLE}
 <body>
     <div class="container" style="text-align: center;">
-        <h1 style="color: darkblue;">오늘의 MoT</h1>
+        <h1 style="color: darkblue;">발달 장애인 부모 교육 및 상담 뉴스레터</h1>
         {NEWS}
     </div>
 </body>

@@ -5,7 +5,6 @@ from datetime import date, datetime
 from mail import MAIL_FORMAT, STYLES
 from news_scrap import get_news_table
 
-from gptanswer import *
 
 def NewsLetter(email_address=""):
     if email_address == "":
@@ -17,7 +16,7 @@ def NewsLetter(email_address=""):
 
     news_table = get_news_table()
 
-    mail_html = MAIL_FORMAT.format(
+    mail_html = MAIL_FORMAT.format( 
         STYLE=STYLES, NEWS=news_table)
     msg.attach(MIMEText(mail_html, 'html'))
     #print(mail_html)
