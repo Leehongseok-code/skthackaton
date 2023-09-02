@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import './MyCalendar.css';
 
 export default function MyCalendar() {
   const [selectedDate, setSelectedDate] = useState(null); // 선택한 날짜 상태
@@ -63,17 +62,6 @@ export default function MyCalendar() {
     // return axios.get(`/api/photos?date=${date}`);
   };
 
-
-  // 선택한 날짜와 비교하여 스타일 추가 함수
-  const getCellStyle = (date) => {
-    if (selectedDate && date) {
-      // 선택한 날짜와 같으면 파란색 동그라미 스타일 추가
-      return selectedDate.getDate() === date.getDate() ? "bg-blue-500 text-white" : "";
-    }
-    return "";
-  };
-
-
   // 주와 해당 주에 속하는 날짜를 동적으로 생성
   const generateCalendar = () => {
     const monthNames = [
@@ -123,7 +111,7 @@ export default function MyCalendar() {
     }
   
     return (
-      <div className="flex items-center justify-center py-8 px-4">
+      <div className="flex items-center justify-center h-screen">
         <div className="w-full shadow-lg">
           <div className="md:p-16 md:pb-12 p-5 dark:bg-gray-800 bg-white rounded-t">
             <div className="px-4 flex items-center justify-between">
@@ -172,7 +160,7 @@ export default function MyCalendar() {
                         <td key={index} className="pt-6">
                           {date !== null ? (
                             <div
-                              className={`relative px-4 py-4 cursor-pointer flex w-full justify-center ${getCellStyle(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), date))}`}
+                              className={`relative px-4 py-4 cursor-pointer flex w-full justify-center`}
                               onClick={() =>
                                 handleDateClick(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), date))
                               }
@@ -182,7 +170,7 @@ export default function MyCalendar() {
                               </p>
                               {/* 파란색 동그라미 */}
                               {selectedDate !== null && date === selectedDate.getDate() && (
-                                <div className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center"style={{ zIndex: 1 }}>
+                                <div className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center" style={{ zIndex: 1 }}>
                                   {/* 원하는 아이콘 또는 내용을 추가할 수 있습니다 */}
                                 </div>
                               )}
@@ -200,20 +188,20 @@ export default function MyCalendar() {
             </div>
           </div>
         </div>
-        <div className="md:py-8 py-5 md:px-16 px-5 dark:bg-gray-700 bg-gray-50 rounded-b">
-          {/* 여기에 날짜별 이벤트 표시나 다른 내용을 추가할 수 있습니다 */}
-        </div>
+        {/* 이상한 박스를 제거하기 위한 빈 div */}
+        <div className="md:py-8 py-5 md:px-16 px-5"></div>
       </div>
+    );
+  };
+
+  return (
+    <>
+      <br></br><br></br><br></br><br></br><br></br><br></br>
+      <div className="text-center mt-10"> {/* text-center 클래스 추가 */}
+      {generateCalendar()}
+
+      {/* {renderPhotos()} */}
+      </div>
+    </>
   );
-};
-
-return (
-  <>
-    <br></br><br></br><br></br><br></br><br></br><br></br>
-
-    {generateCalendar()}
-
-    {renderPhotos()}
-  </>
-);
 }
