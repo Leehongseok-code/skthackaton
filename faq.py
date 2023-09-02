@@ -9,7 +9,7 @@ def get_faq():
     h = "서비스 사용 전에 소리를 끄고 사용해주시길 바랍니다."
 
     qa = [{"question":a, "answer":b}, {"question":c, "answer":d},{"question":e,"answer":f},{"question":g,"answer":h}]
-=======
+
     i = "게시판에 게시할때 콜라주 결과 이외의 사진을 올려도 되나요? "
     j = "물론입니다.서비스 활용 전반에 관련된 사진은 모두 업로드 가능합니다."
     k = "회원 가입을 했는데 뉴스레터가 안와요."
