@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { storage, db, ref, uploadBytes, getDownloadURL, collection, getDocs,serverTimestamp } from '../../firebase-config';
 import { Link, useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 import Footer from '../Footer';
 import '../../App.css';
 
@@ -31,7 +32,8 @@ function Board() {
         querySnapshot.forEach((doc) => {
           const postData = doc.data();
           // Timestamp 객체를 문자열로 변환하여 사용
-          postData.createdTimestamp = postData.createdTimestamp.toDate().toLocaleString();
+          const formattedTimestamp = format(postData.createdTimestamp.toDate(), 'yy/MM/dd HH:mm');
+          postData.createdTimestamp = formattedTimestamp;
           postsData.push(postData);
         });
         setUserData(postsData);
