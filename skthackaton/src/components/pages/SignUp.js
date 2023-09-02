@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase-config";
 import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
-import axios from 'axios';
 import '../../App.css';
 import Footer from '../Footer';
 
@@ -11,19 +10,6 @@ const SignUp = () => {
   const [userData, setUserData] = useState(null);
 
   const navigate = useNavigate();
-
-  function handleGoogleLogin() {
-    const provider = new GoogleAuthProvider(); // provider 구글 설정
-    signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
-      .then((data) => {
-        setUserData(data.user); // user data 설정
-        console.log(data); // console에 UserCredentialImpl 출력
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,15 +27,33 @@ const SignUp = () => {
 
     try {
       // Firebase Authentication을 사용하여 이메일과 비밀번호로 로그인
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      setUserData(user);
-      console.log(user);
-      navigate('/');
+      if (email.trim() !== '' && password.trim() !== '') {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        setUserData(user);
+        console.log(user);
+        navigate('/');
+      }
     } catch (error) {
       console.error(error);
     }
   };
+
+  const handleGoogleLogin = async (e) => {
+    e.preventDefault();
+
+    const provider = new GoogleAuthProvider(); // provider 구글 설정
+    signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
+      .then((data) => {
+        setUserData(data.user); // user data 설정
+        console.log(data); // console에 UserCredentialImpl 출력
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 
   return (
     <>
@@ -75,8 +79,8 @@ const SignUp = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    required
                     value={email}
+                    required
                     onChange={handleEmailChange} // 입력값이 변경될 때 상태 업데이트
                     className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -100,8 +104,8 @@ const SignUp = () => {
                     name="password"
                     type="password"
                     autoComplete="current-password"
-                    required
                     value={password}
+                    required
                     onChange={handlePasswordChange} // 입력값이 변경될 때 상태 업데이트
                     className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
