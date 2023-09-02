@@ -5,7 +5,7 @@ import Footer from '../Footer';
 
 function FAQ() {
   const [activeTab, setActiveTab] = useState(null);
-//   const [faqInfo, setFaqInfo] = useState([]); // 이미지 정보 상태
+  const [faqInfo, setFaqInfo] = useState([]); // 이미지 정보 상태
 
   const toggleTab = (index) => {
     if (activeTab === index) {
@@ -15,53 +15,26 @@ function FAQ() {
     }
   };
 
-//   useEffect(() => {
-//     axios
-//       .post(`http://49.50.162.196:8000/aidoctor/`)
-//       .then((response) => {
-//         // 서버에서 받은 응답 데이터
-//         const serverFaqInfo = response.data;
+  useEffect(() => {
+    axios
+      .post(`http://49.50.162.196:8000/aidoctor/faq/`)
+      .then((response) => {
+        // 서버에서 받은 응답 데이터
+        const serverFaqInfo = response.data;
 
-//         // 서버에서 받아온 이미지 정보를 현재 이미지 정보에 추가
-//         const updatedFaqInfo = serverFaqInfo.map((item) => ({
-//             question: item.picture_url,
-//             answer: item.word,
-//         }));
+        // 서버에서 받아온 이미지 정보를 현재 이미지 정보에 추가
+        const updatedFaqInfo = serverFaqInfo.map((item) => ({
+            question: item.question,
+            answer: item.answer,
+        }));
 
-//         // imageInfo 배열 업데이트
-//         setFaqInfo(updatedFaqInfo);
-//       })
-//       .catch((error) => {
-//         // 오류 발생 시의 처리
-//       })
-//   }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
-
-  const faqInfo = [
-    {
-      question: 'When will my order arrive?',
-      answer: 'Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation.',
-    },
-    {
-      question: 'How do I track my order?',
-      answer: 'Once shipped, you’ll get a confirmation email that includes a tracking number and additional information regarding tracking your order.',
-    },
-    {
-      question: 'What’s your return policy?',
-      answer: 'We allow the return of all items within 30 days of your original order’s date. If you’re interested in returning your items, send us an email with your order number and we’ll ship a return label.',
-    },
-    {
-      question: 'How do I make changes to an existing order?',
-      answer: 'Changes to an existing order can be made as long as the order is still in “processing” status. Please contact our team via email and we’ll make sure to apply the needed changes. If your order has already been shipped, we cannot apply any changes to it. If you are unhappy with your order when it arrives, please contact us for any changes you may require.',
-    },
-    {
-      question: 'What shipping options do you have?',
-      answer: 'For USA domestic orders we offer FedEx and USPS shipping.',
-    },
-    {
-      question: 'What payment methods do you accept?',
-      answer: 'Any method of payments acceptable by you. For example: We accept MasterCard, Visa, American Express, PayPal, JCB Discover, Gift Cards, etc.',
-    },
-  ];
+        // faqInfo 배열 업데이트
+        setFaqInfo(updatedFaqInfo);
+      })
+      .catch((error) => {
+        // 오류 발생 시의 처리
+      })
+  }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
 
   return (
     <>

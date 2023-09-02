@@ -38,7 +38,8 @@ function Collage() {
   //데이터 호출
   useEffect(() => {
     const transformedImages = selectedImages.map((imageInfo) => ({
-      word: imageInfo.name,
+      word: imageInfo.eng,
+      kor: imageInfo.name,
       picture_url: imageInfo.path,
     }));
 
@@ -51,7 +52,7 @@ function Collage() {
           // 서버에서 받아온 이미지 정보를 콜라주에 넣기
           const collageImage = (
             <div>
-              <img className='image-collage' src={serverImageInfo} alt="Collage" />
+              <img className='image-collage' src={serverImageInfo.image_url} alt="Collage" />
             </div>
           );
 
