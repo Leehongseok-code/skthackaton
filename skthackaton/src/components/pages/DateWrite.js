@@ -30,7 +30,7 @@ function DateWrite() {
       }
 
     // Firebase Storage에 파일 업로드
-    const storageRef = ref(storage, `uploads/${selectedFile.name}`);
+    const storageRef = ref(storage, `uploads2/${selectedFile.name}`);
     const uploadTask = uploadBytes(storageRef, selectedFile);
 
     try {
