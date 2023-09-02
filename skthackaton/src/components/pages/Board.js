@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { storage, db, ref, uploadBytes, getDownloadURL, collection, getDocs,serverTimestamp } from '../../firebase-config';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Footer';
 import '../../App.css';
 
@@ -92,7 +92,7 @@ function Board() {
                       파일
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      날짜
+                      작성시간
                     </th>
                   </tr>
                 </thead>
@@ -104,7 +104,9 @@ function Board() {
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div className="flex items-center">
-                          <p className="text-gray-900 whitespace-no-wrap">{user.title}</p>
+                          <Link to={`/boarddetail/${index + 1}`} state={{ userData: user }}>
+                            {user.title}
+                          </Link>
                         </div>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
