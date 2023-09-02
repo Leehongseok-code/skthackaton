@@ -1,14 +1,34 @@
-/* PostsByDate 컴포넌트의 스타일 */
 .posts-by-date-container {
-    text-align: center; /* 텍스트를 가운데 정렬합니다. */
+  text-align: center; /* 텍스트를 가운데 정렬합니다. */
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .bold-text {
-    font-weight: bold; /* 텍스트를 볼드 처리합니다. */
-  }
-  
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bold-text {
+  font-weight: bold; /* 텍스트를 볼드 처리합니다. */
+}
+
+/* MyCalendar를 중앙에 위치시키는 스타일 추가 */
+.calendar-container {
+  display: flex;
+  justify-content: flex-end; /* 가로 방향을 오른쪽으로 정렬 */
+  align-items: flex-start; /* 세로 방향을 위쪽으로 정렬 */
+  height: 100vh;
+  margin-top: -25vh; /* 화면 상단에서 10vh (화면 높이의 10%) 위에 위치 */
+  margin-right: 25vw; /* 화면 오른쪽에서 10vw (화면 너비의 10%) 오른쪽에 위치 */
+}
+.button2css {
+  display: flex;
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+  margin-top: 15vh; /* 화면 세로 중앙으로 이동 (화면 높이의 절반) */
+}
+.button3css {
+  display: flex;
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+  margin-top: 5vh; /* 화면 세로 중앙으로 이동 (화면 높이의 절반) */
+}
