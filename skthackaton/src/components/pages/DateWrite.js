@@ -20,12 +20,12 @@ function DateWrite() {
     event.preventDefault();
 
     if (!selectedFile) {
-      alert("Please select a file to upload.");
+      alert("업로드 할 파일을 선택해주세요.");
       return;
     }
 
     if (!userUID) {
-        alert("Please log in to create a post.");
+        alert("게시물을 올리려면 로그인을 먼저 해주세요.");
         return;
       }
 
