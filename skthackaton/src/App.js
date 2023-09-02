@@ -18,7 +18,10 @@ import { StepperWithContent } from './components/StepperWithContent';
 import ProgressStepper from './components/ProgressStepper';
 import CustomAudioPlayer from './components/CustomAudioPlayer';
 import BoardWrite from './components/pages/BoardWrite';
+import BoardDetail from './components/pages/BoardDetail';
 import PostsByDate from './components/pages/PostsByDate';
+import DateWrite from './components/pages/DateWrite';
+import History from './components/pages/History';
 
 function App() {
   return (
@@ -28,6 +31,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/board" element={<Board />} />
         <Route path="/boardwrite" element={<BoardWrite />} />
+        <Route path="/boarddetail/:id" element={<BoardDetail />} />
         <Route path="/Scraps" element={<Scraps />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/postbydate" element={<PostsByDate />} />
@@ -41,6 +45,8 @@ function App() {
         <Route path="/stepperwithcontent" element={<StepperWithContent />} />
         <Route path="/progressstepper" element={<ProgressStepper />} />
         <Route path="/customaudioplayer" element={<CustomAudioPlayer />} />
+        <Route path="/datewrite" element={<DateWrite />} />
+        <Route path="/history" element={<History />} />
       </Routes>
     </BrowserRouter>
   );
