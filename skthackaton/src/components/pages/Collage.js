@@ -38,7 +38,8 @@ function Collage() {
   //데이터 호출
   useEffect(() => {
     const transformedImages = selectedImages.map((imageInfo) => ({
-      word: imageInfo.name,
+      word: imageInfo.eng,
+      kor: imageInfo.name,
       picture_url: imageInfo.path,
     }));
 
