@@ -13,7 +13,6 @@ function BoardDetail() {
   const [updatedComments] = useState('');
   const post = userData;
 
-  const authnow = getAuth();
 
   // 게시물 데이터 배열 추가
   const [postData, setPostData] = useState([]);
@@ -39,21 +38,9 @@ function BoardDetail() {
     fetchUserData();
   }, []); // 빈 배열을 두어 한 번만 데이터를 가져오도록 설정
 
-  if (!post) {
-    return <div>게시물을 찾을 수 없습니다.</div>;
-  }
-
-  onAuthStateChanged(authnow, (user) => {
-    if (user) {
-      // 사용자가 로그인한 경우
-      userUID = user.uid;
-      setUserName(user.displayName || ''); // 사용자 닉네임
-    } else {
-      // 사용자가 로그아웃한 경우 또는 로그인하지 않은 경우
-      userUID = null;
-      setUserName('');
-    }
-  });
+  // if (!post) {
+  //   return <div>게시물을 찾을 수 없습니다.</div>;
+  // }
 
   // 댓글 등록 핸들러
   const submitComment = async () => {
@@ -70,19 +57,19 @@ function BoardDetail() {
         text: commentText,
       };
 
-      // 해당 게시물을 찾습니다.
-      const updatedPostData = postData.map((postItem) => {
-        if (postItem.id === post.id) {
-          // 해당 게시물을 찾았으면 댓글을 추가합니다.
-          const updatedComments = [...postItem.comments, newComment];
-          return { ...postItem, comments: updatedComments };
-        }
-        return postItem;
-      });
+      // // 해당 게시물을 찾습니다.
+      // const updatedPostData = postData.map((postItem) => {
+      //   if (postItem.id === post.id) {
+      //     // 해당 게시물을 찾았으면 댓글을 추가합니다.
+      //     const updatedComments = [...postItem.comments, newComment];
+      //     return { ...postItem, comments: updatedComments };
+      //   }
+      //   return postItem;
+      // });
 
       // Firebase Firestore에서 해당 게시물 업데이트
-      const postDocRef = collection(db, 'posts', post.id); // 게시물 문서에 대한 참조
-      await updateDoc(postDocRef, { comments: updatedComments });
+      const postDocRef = collection(db, 'posts', postData.uid); // 게시물 문서에 대한 참조
+      await updateDoc(postDocRef, { comments: newComment });
 
       setCommentText(''); // 댓글 작성 완료 후 입력 필드 비우기
     } catch (error) {
@@ -129,7 +116,7 @@ function BoardDetail() {
           <div className="text-sm mb-2 text-gray-400 cursor-pointer font-medium">View all {post.commentCount} comments</div>
           
           {/* 댓글 입력 필드 */}
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <input
               type="text"
               placeholder="댓글 입력..."
@@ -140,12 +127,12 @@ function BoardDetail() {
           </div>
           
           {/* 댓글 등록 버튼 */}
-          <button
+          {/* <button
             onClick={submitComment}
             className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
           >
             댓글 등록
-          </button>
+          </button> */}
   
           {/* 댓글 내용 표시 */}
           {post.comments && post.comments.map((comment, index) => (
