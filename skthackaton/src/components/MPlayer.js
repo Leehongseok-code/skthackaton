@@ -6,12 +6,12 @@ import { useLocation  , useNavigate } from 'react-router-dom';
 function MPlayer() {
 
   const emotionToMusic = {
-    "1": ["/mp3/Eine kleine Nachtmusik.mp3"], // 기쁨에 맞는 음악 URL 목록으로 변경
-    "2": ["/mp3/Mars, the Bringer of War.mp3"],
-    "3": ["/mp3/Mars, the Bringer of War.mp3"],
-    "4": ["/mp3/Eine kleine Nachtmusik.mp3","/mp3/Overture.mp3","/mp3/Can-can-music.mp3"],
-    "5": ["/mp3/Danse Macabre.mp3","/mp3/The Sorcerer's Apprentice.mp3"],
-    "6": ["/mp3/Totentanz.mp3","/mp3/A Night on Bald Mountain.mp3"]
+    "1": ["/mp3/1/Dance of the Sugar Plum Fairy.mp3","/mp3/1/Rondo Alla Turca.mp3","/mp3/1/Spring.mp3"], // 기쁨에 맞는 음악 URL 목록으로 변경
+    "2": ["/mp3/2/Adagio-for-strings.mp3","/mp3/2/Nimrod.mp3"],
+    "3": ["/mp3/3/A Night on Bald Mountain6.mp3","/mp3/3/Dies Irae.mp3","/mp3/3/Mars, the Bringer of War.mp3"],
+    "4": ["/mp3/4/Can-can.mp3","/mp3/4/Eine-Kleine-Nachtmusik4.mp3","/mp3/4/Overture.mp3"],
+    "5": ["/mp3/5/Danse Macabre5.mp3","/mp3/5/In the Hall of the Mountain King.mp3","/mp3/5/The Sorcerer's Apprentice 5.mp3"],
+    "6": ["/mp3/6/A Night on Bald Mountain6.mp3","/mp3/6/Mars, the Bringer of War 6.mp3","/mp3/6/Totentanz6.mp3"]
     
     // 나머지 감정에 맞는 음악 URL 목록 추가
   };
