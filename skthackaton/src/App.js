@@ -22,6 +22,8 @@ import BoardDetail from './components/pages/BoardDetail';
 import PostsByDate from './components/pages/PostsByDate';
 import DateWrite from './components/pages/DateWrite';
 import History from './components/pages/History';
+import Home2 from './components/Home2';
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home2" element={<Home2 />} />
         <Route path="/board" element={<Board />} />
         <Route path="/boardwrite" element={<BoardWrite />} />
         <Route path="/boarddetail/:id" element={<BoardDetail />} />
