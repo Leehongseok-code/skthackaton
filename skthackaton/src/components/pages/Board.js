@@ -53,6 +53,9 @@ function Board() {
           postData.createdTimestamp = formattedTimestamp;
           postsData.push(postData);
         });
+
+        // 데이터를 최신순으로 정렬
+        postsData.sort((a, b) => b.createdTimestamp.localeCompare(a.createdTimestamp));
         setUserData(postsData);
       } catch (error) {
         console.error('Error fetching data:', error);
