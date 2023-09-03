@@ -1,8 +1,28 @@
 import openai
 from cv import col, set_a4
 from transparent import transparent
+import requests
+from dalle import DallE
+
 
 class GPT():
+    def img2url(self, path):
+        # 이미지 업로드할 서비스 URL
+        upload_url = "https://api.imgbb.com/1/upload"
+
+        # ImgBB API 키
+        api_key = "090dbbdaf9a4c7c9f24d8a2cf7431dc7"
+
+        # 이미지 파일 열기
+        with open(path, "rb") as image_file:
+            # 이미지 업로드 요청
+            response = requests.post(upload_url, files={"image": image_file}, params={"key": api_key})
+
+        # API 응답에서 이미지 URL 추출
+        image_url = response.json()["data"]["url"]
+        print("이미지 URL:", image_url)
+
+
     def __init__(self):
         openai.api_key = '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'
         messages = []
@@ -68,8 +88,6 @@ class GPT():
         messages = []
         messages.append({"role": "user", "content":content})
 
-        if len(messages) > 4:
-            messages=messages[:-2]
 
         completion = openai.ChatCompletion.create(
                 model="gpt-4",
@@ -169,8 +187,14 @@ class GPT():
             print(pic)
             r = i // 3
             c = i % 3
-            image_url = col(pic, c * 800 + 150, r * 700 + 250)
-        return image_url
+            image_url1, _= col(pic, c * 800 + 150, r * 700 + 250)
+        transparent()
+        dalle = DallE()
+        image_url2 = dalle.fix("./test_image/A4.png", "./test_image/transparent_image.png")
+        print("image2:", image_url2)
+        
+
+        return image_url1, image_url2 
 
 if __name__ == "__main__":
     gpt = GPT()

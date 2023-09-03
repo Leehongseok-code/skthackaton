@@ -113,7 +113,7 @@ def col(src2_path, x, y):
     # API 응답에서 이미지 URL 추출
     image_url = response.json()["data"]["url"]
     print("이미지 URL:", image_url)
-    return image_url
+    return image_url, src1
 
 
 if __name__ == "__main__":

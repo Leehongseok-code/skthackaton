@@ -6,6 +6,8 @@ from gpt_post import GPT
 from dalle import DallE
 from transparent import transparent
 from faq import get_faq
+from new_newsletter import NewsLetter 
+import requests
 
 import urllib.parse
 
@@ -84,12 +86,17 @@ def get_instruction(request):
     
     print(picture_position_dict)
 
-    image_url = gpt.post_pictures(picture_position_dict)
+    image_url1, image_url2 = gpt.post_pictures(picture_position_dict)
     #transparent()    
+    print(image_url1, image_url2)
 
-    return JsonResponse({"image_url":image_url})
+    return JsonResponse({"image_url":image_url1, "collage_url":image_url2})
 
 
 @api_view(["GET", "POST"])
 def faq(request):
     return Response(get_faq())
+
+def send_newsletter(request, email):
+    NewsLetter(email)
+    return HttpResponse("email success")

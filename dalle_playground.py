@@ -51,6 +51,6 @@ class DallE():
 
 if __name__ == "__main__":
     dalle = DallE()
-    dalle.generate(prompt = "kids wallpaper style background with cute animal pattern")
-    dalle.fix("./test_image/A4.png", "./test_image/transparent_image.png")
+    dalle.generate(prompt = "Art therapy Program's icon without characaters")
+    #dalle.fix("./test_image/A4.png", "./test_image/transparent_image.png")
     #fix()
