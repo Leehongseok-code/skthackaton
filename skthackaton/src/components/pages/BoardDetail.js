@@ -139,7 +139,7 @@ function BoardDetail() {
         {/* 삭제 메뉴 */}
         {showDelete && (
           <div className="bg-white border p-2 absolute right-4 top-4">
-            <button onClick={deletePost}>삭제하기</button>
+            <button>삭제하기</button>
           </div>
         )}
 
