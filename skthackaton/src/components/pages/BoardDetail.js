@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { storage, db, updateDoc, collection, getDocs, serverTimestamp } from '../../firebase-config';
+import { storage, db, updateDoc, collection, getDocs, deleteDoc } from '../../firebase-config';
+import { format } from 'date-fns';
+import Footer from '../Footer';
 import '../../App.css';
 
 function BoardDetail() {
 
   const location = useLocation();
-  const { userData } = location.state;
+  const userData = location.state ? location.state.userData : null;
   const [commentText, setCommentText] = useState(''); // 댓글 저장할 상태 변수
   const [userName, setUserName] = useState('');
   const [updatedComments] = useState('');
@@ -17,6 +19,32 @@ function BoardDetail() {
   // 게시물 데이터 배열 추가
   const [postData, setPostData] = useState([]);
 
+  const [showDelete, setShowDelete] = useState(false);
+
+  const showDeleteMenu = () => {
+    setShowDelete(true);
+  };
+
+  const hideDeleteMenu = () => {
+    setShowDelete(false);
+  };
+
+  const deletePost = async () => {
+    try {
+      // Firebase Firestore에서 해당 게시물 삭제
+      const postDocRef = collection(db, 'posts', userUID);
+      await deleteDoc(postDocRef);
+  
+      // 삭제 후, UI에서 해당 게시물을 제거합니다.
+      setPostData((prevData) => prevData.filter((item) => item.uid !== userUID));
+  
+      // 삭제 메뉴를 숨깁니다.
+      hideDeleteMenu();
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
+  };  
+
   useEffect(() => {
     // Firebase Firestore에서 게시물 데이터 가져오기
     const fetchUserData = async () => {
@@ -25,8 +53,9 @@ function BoardDetail() {
         const postsData = [];
         querySnapshot.forEach((doc) => {
           const postData = doc.data();
-          // Timestamp 객체를 문자열로 변환하여 사용
-          postData.createdTimestamp = postData.createdTimestamp.toDate().toLocaleString();
+
+          const formattedTimestamp = format(postData.createdTimestamp.toDate(), 'yy/MM/dd HH:mm');
+          postData.createdTimestamp = formattedTimestamp;
           postsData.push(postData);
         });
         setPostData(postsData);
@@ -94,13 +123,30 @@ function BoardDetail() {
 
 
   return (
-    <div className="App-back">
-      <div className="rounded overflow-hidden border w-full lg:w-6/12 md:w-6/12 bg-white mx-3 md:mx-0 lg:mx-0">
+    <>
+    <div className="App-back flex justify-center items-center">
+      {userData && post ? (
+      <div className="rounded overflow-hidden border w-01 lg:w-4/12 md:w-6/12 bg-white mx-3 mt-6 mb-10 md:mx-0 lg:mx-0">
         <div className="w-full flex justify-between p-3">
           <div className="flex">
             <span className="pt-1 ml-2 font-bold text-lg">{post.title}</span>
           </div>
-          <span className="px-2 hover:bg-gray-300 cursor-pointer rounded"><i className="fas fa-ellipsis-h pt-2 text-lg"></i></span>
+          <span className="px-2 hover:bg-gray-300 cursor-pointer rounded">
+            <i className="fas fa-ellipsis-h pt-2 text-lg" onClick={showDeleteMenu}></i>
+          </span>
+        </div>
+
+        {/* 삭제 메뉴 */}
+        {showDelete && (
+          <div className="bg-white border p-2 absolute right-4 top-4">
+            <button onClick={deletePost}>삭제하기</button>
+          </div>
+        )}
+
+        <div className="w-full flex justify-between px-3">
+          <div className="flex">
+              <span className="ml-2 font-medium text-sm">{post.createdTimestamp}</span>
+          </div>
         </div>
         <img className="relative z-10 w-full bg-cover" src={post.imageUrl} alt="postImage" />
         <div className="px-3 pb-2">
@@ -113,7 +159,7 @@ function BoardDetail() {
               <span className="font-medium mr-2">{post.authorName}</span> {post.content}
             </div>
           </div>
-          <div className="text-sm mb-2 text-gray-400 cursor-pointer font-medium">View all {post.commentCount} comments</div>
+          <div className="text-sm mb-4 text-gray-400 cursor-pointer font-medium">View all {post.commentCount} comments</div>
           
           {/* 댓글 입력 필드 */}
           {/* <div className="mb-3">
@@ -142,7 +188,12 @@ function BoardDetail() {
           ))}
         </div>
       </div>
+      ) : (
+        <div>게시물을 찾을 수 없습니다.</div>
+      )}
     </div>
+    <Footer />
+    </>
   );
 }
 
