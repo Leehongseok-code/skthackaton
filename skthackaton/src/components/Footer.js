@@ -37,10 +37,11 @@ function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="btns btn--footer" onClick={handleSubscribe}>
-             Subscribe
-            </button>
+            
           </form>
+          <Button buttonStyle="btn btn--footer btn--medium" onClick={handleSubscribe}>
+             Subscribe
+          </Button>
         </div>
       </section>
       <section class='social-media'>
