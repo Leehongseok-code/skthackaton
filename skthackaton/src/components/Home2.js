@@ -32,7 +32,7 @@ export function Home2() {
                 SKT와 함께하는 자폐 아동 치료 서비스
               </Typography>
               <Typography variant="lead" color="white" className="opacity-80">
-              SK텔레콤이 자체 개발한 AI 기반 영상분석 모델은 영상 데이터에서 발달장애인의 특정 동작과 모션 패턴을 분석, 도전적 행동 유형과 발생 빈도·강도 등을 정확히 인지한다.
+              SK텔레콤이 자체 개발한 AI 기반 영상분석 모델은 영상 데이터에서<br></br>발달장애인의 특정 동작과 모션 패턴을 분석하고<br></br>도전적 행동 유형과 발생 빈도·강도 등을 정확히 인지한다.
               </Typography>
             </div>
           </div>
