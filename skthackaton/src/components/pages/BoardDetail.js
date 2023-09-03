@@ -132,14 +132,15 @@ function BoardDetail() {
             <span className="pt-1 ml-2 font-bold text-lg">{post.title}</span>
           </div>
           <span className="px-2 hover:bg-gray-300 cursor-pointer rounded">
-            <i className="fas fa-ellipsis-h pt-2 text-lg" onClick={showDeleteMenu}></i>
+            <i className="fas fa-ellipsis-h pt-2 text-lg"></i>
+            {/* <i className="fas fa-ellipsis-h pt-2 text-lg" onClick={showDeleteMenu}></i> */}
           </span>
         </div>
 
         {/* 삭제 메뉴 */}
         {showDelete && (
           <div className="bg-white border p-2 absolute right-4 top-4">
-            <button>삭제하기</button>
+            <button onClick={deletePost}>삭제하기</button>
           </div>
         )}
 
