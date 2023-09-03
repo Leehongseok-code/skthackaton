@@ -11,10 +11,10 @@ function Footer() {
     try {
       // 이메일을 백엔드로 전송
       await axios.post(`http://49.50.162.196:8000/aidoctor/newsletter/${email}`); 
-      alert('Successfully subscribed!');
+      alert('정기구독 해주셔서 감사합니다!');
     } catch (error) {
       console.error('Error subscribing:', error);
-      alert('Error subscribing. Please try again later.');
+      alert('Error subscribing. 다시 한 번 시도해주세요.');
     }
   };
 
