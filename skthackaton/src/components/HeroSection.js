@@ -8,15 +8,13 @@ import {Link} from 'react-router-dom';
 
 function HeroSection() {
 
-    let [heart, heartChange] = useState(0); // 초기값 0
-
     return (
         <div className = 'hero-container'>
             <img src="/image/main-bg.png"/>
             {/* <video src="/videos/twinkle.mp4" autoPlay loop muted /> */}
-            <h1>정서랑</h1>
-            <p>자폐 아동을 위한 합리적인 미술 치료 서비스</p>
-            <p><span onClick={()=>{heartChange(heart+1)}}>❤</span> { heart }</p>
+            <h1>U-Dalle</h1>
+            <p>자폐 아동을 위한 합리적인 음악·미술 치료 서비스 '유달리(U-Dalle)'</p>
+            <br></br>
             <div className="hero-btns">
                 <Button className='btns' buttonStyle='btn--outline'
                 buttonSize='btn--large' to="/music">GET STARTED</Button>
