@@ -38,6 +38,7 @@ function App() {
         <Route path="/Scraps" element={<Scraps />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/postbydate" element={<PostsByDate />} />
+        <Route path="/history" element={<History />} />
         <Route path="/Music" element={<Music />} />
         <Route path="/selectpic" element={<SelectPic />} />
         <Route path="/collage" element={<Collage />} />

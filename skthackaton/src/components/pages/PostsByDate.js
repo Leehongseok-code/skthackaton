@@ -4,6 +4,8 @@ import MyCalendar from '../MyCalendar';
 import Calendar from 'react-calendar';
 import '../PostsByDate.css'; // 커스텀 스타일을 추가하는 CSS 파일
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Footer';
+
 
 function PostsByDate() {
   const { date } = useParams();
@@ -34,7 +36,7 @@ function PostsByDate() {
   return (
     <div className='App-back'>
       <div className="posts-by-date-container">
-      <h1 className="bold-text">나만의 콜라주 역사를 확인해보세요! - {date}</h1>
+      <h1 className="bold-text">나만의 콜라주 역사를 확인해보세요!</h1>
       </div>
       <div className='button2css'>
             <button
@@ -47,10 +49,10 @@ function PostsByDate() {
       <MyCalendar setSelectedDate={setSelectedDate}/>
       </div>
       <div className='button3css'>
-            <button
+            {/* <button
               onClick={navigateToHistory}
               className="btns btn--board"
-            >날짜 선택</button>
+            >날짜 선택</button> */}
             </div>
       {/* <ul>
         {posts.map((post) => (
@@ -60,8 +62,10 @@ function PostsByDate() {
           </li>
         ))}
       </ul> */}
-      
+      <br></br><br></br><br></br>
+      <Footer/>
     </div>
+    
     
   );
 }

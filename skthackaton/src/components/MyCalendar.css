@@ -1,0 +1,13 @@
+/* 이미지를 달력 아래에 위치하고 중앙 아래로 배치하는 스타일 */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* 중앙 아래로 배치 */
+    height: 100vh; /* 화면 높이에 맞게 조정 */
+  }
+  
+  .image {
+    max-width: 100%; /* 이미지가 컨테이너를 벗어나지 않도록 최대 너비 지정 */
+    max-height: 50%; /* 이미지가 컨테이너의 50% 높이까지만 표시 */
+    /* 기타 원하는 이미지 스타일 추가 */
+  }
