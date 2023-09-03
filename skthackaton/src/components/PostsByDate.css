@@ -18,7 +18,7 @@
   align-items: flex-start; /* 세로 방향을 위쪽으로 정렬 */
   height: 100vh;
   margin-top: -25vh; /* 화면 상단에서 10vh (화면 높이의 10%) 위에 위치 */
-  margin-right: 25vw; /* 화면 오른쪽에서 10vw (화면 너비의 10%) 오른쪽에 위치 */
+  margin-right: 35vw; /* 화면 오른쪽에서 10vw (화면 너비의 10%) 오른쪽에 위치 */
 }
 .button2css {
   display: flex;

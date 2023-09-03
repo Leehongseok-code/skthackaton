@@ -4,6 +4,7 @@ import { storage, db, ref, uploadBytes, getDownloadURL, collection, addDoc,serve
  import { getAuth, onAuthStateChanged } from 'firebase/auth';
  import { useNavigate } from 'react-router-dom';
  import '../BoardWrite.css';
+ 
 
 function BoardWrite() {
   const [selectedFile, setSelectedFile] = useState(null);
