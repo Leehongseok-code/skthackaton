@@ -32,10 +32,6 @@ function SelectPic() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    handleGeneratePic(); // 컴포넌트가 마운트될 때 이미지 정보를 가져옴
-  }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
-
-  const handleGeneratePic = () => {
     setLoading(true); // 로딩 상태 활성화
     axios
       .post(`http://49.50.162.196:8000/aidoctor/${selectedNumber}/`)
@@ -59,7 +55,7 @@ function SelectPic() {
       .finally(() => {
         setLoading(false); // 로딩 상태 비활성화
       });
-  };
+  }, []); // 빈 배열을 전달하여 한 번만 호출되도록 설정
 
   const handleImageClick = (index) => {
     if (selectedStep < totalSteps) {
