@@ -65,7 +65,7 @@ export function Home2() {
                 className="mb-3 font-bold"
                 color="blue-gray"
               >
-                정서랑
+                U-Dalle
               </Typography>
               <Typography className="mb-8 font-normal text-blue-gray-500">
               감성 미술 치료: 자폐 아동을 위한 음악과 이미지의 마법
