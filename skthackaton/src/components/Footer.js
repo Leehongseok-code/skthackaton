@@ -37,9 +37,9 @@ function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button buttonStyle='btns btn--outline' onClick={handleSubscribe}>
+            <button className="btns btn--footer" onClick={handleSubscribe}>
              Subscribe
-            </Button>
+            </button>
           </form>
         </div>
       </section>

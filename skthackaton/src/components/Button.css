@@ -42,6 +42,19 @@
     border-radius: 8px;
     width: 16vh;
 }
+.btn--footer {
+    padding: 8px 20px;
+    outline: black;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 8px;
+    height: 6vh;
+    width: 16vh;
+}
 
 .btn--small {
     padding: 10px 22px;
