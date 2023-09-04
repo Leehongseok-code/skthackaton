@@ -1,5 +1,4 @@
 import React from "react";
-import udalle from './udalle.mp4'
 import {
   Card,
   CardBody,
@@ -88,9 +87,9 @@ export function Home2() {
               title="Service Video"
               width="100%"
               height="100%"
-              src={udalle}
+              src='/videos/udalle.mp4'
               frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
                 </CardHeader>
