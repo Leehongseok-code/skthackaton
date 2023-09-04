@@ -1,6 +1,7 @@
 import React from "react";
 import smile from './smile.png';
 import mainimg from './mainimg.png'
+import udalle from './udalle.mp4'
 import {
   Card,
   CardBody,
@@ -80,20 +81,20 @@ export function Home2() {
             <div className="mx-auto mt-24 flex w-full justify-center px-4 md:w-4/12 lg:mt-0">
               <Card className="shadow-lg shadow-gray-500/10">
                 <CardHeader className="relative h-56">
-                  <img 
+                  {/* <img 
                     alt="Card Image"
                     src={mainimg}
                     className="h-full w-full z-10 relative"
-                  />
-                  {/* <iframe
+                  /> */}
+                  <iframe
               title="Service Video"
               width="100%"
               height="100%"
-              src="https://www.youtube.com/watch?v=HHxJrgnV8oc"
+              src={udalle}
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-            ></iframe> */}
+            ></iframe>
                 </CardHeader>
                 <CardBody>
                   <Typography
