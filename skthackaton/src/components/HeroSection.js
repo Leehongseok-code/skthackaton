@@ -19,7 +19,7 @@ function HeroSection() {
                 <Button className='btns' buttonStyle='btn--outline'
                 buttonSize='btn--large' to="/music">GET STARTED</Button>
                 <Button className = 'btns' buttonStyle = 'btn--primary' 
-                buttonSize = 'btn--large'>WATCH TRAILER<i className = 'far fa-play-circle'/></Button>
+                buttonSize = 'btn--large' to="/watch-trailer">WATCH TRAILER<i className = 'far fa-play-circle'/></Button>
             </div>
                
         </div>

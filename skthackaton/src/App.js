@@ -22,6 +22,7 @@ import BoardDetail from './components/pages/BoardDetail';
 import PostsByDate from './components/pages/PostsByDate';
 import DateWrite from './components/pages/DateWrite';
 import History from './components/pages/History';
+import WatchTrailerPage from './components/WatchTrailerPage';
 import Home2 from './components/Home2';
 
 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/customaudioplayer" element={<CustomAudioPlayer />} />
         <Route path="/datewrite" element={<DateWrite />} />
         <Route path="/history" element={<History />} />
+        <Route path="/watch-trailer" element={<WatchTrailerPage />} />
       </Routes>
     </BrowserRouter>
   );
