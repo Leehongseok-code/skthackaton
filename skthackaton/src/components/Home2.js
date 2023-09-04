@@ -1,6 +1,4 @@
 import React from "react";
-import smile from './smile.png';
-import mainimg from './mainimg.png'
 import udalle from './udalle.mp4'
 import {
   Card,
