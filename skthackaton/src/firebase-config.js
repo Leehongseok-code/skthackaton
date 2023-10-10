@@ -1,21 +1,21 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signOut } from "firebase/auth";
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { getFirestore, collection, addDoc, updateDoc, getDocs, deleteDoc, serverTimestamp, doc } from 'firebase/firestore';
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyDja8wn_WIL3OCtrGGg92P9gYtA3AGx-lQ",
-    authDomain: "skthackaton-5ee5a.firebaseapp.com",
-    projectId: "skthackaton-5ee5a",
-    storageBucket: "skthackaton-5ee5a.appspot.com",
-    messagingSenderId: "215406750352",
-    appId: "1:215406750352:web:7e1f9c3a4f43195cb5c615",
-    measurementId: "G-L8CCH5C6B4"  
+  apiKey: "AIzaSyCJfX8rHFPjM6ZMYqWa3camVNAWzaSWEdc",
+  authDomain: "syncaton.firebaseapp.com",
+  projectId: "syncaton",
+  storageBucket: "syncaton.appspot.com",
+  messagingSenderId: "516674124417",
+  appId: "1:516674124417:web:91f71094ec6ec4b2b56b80",
+  measurementId: "G-3E29XQYMNF"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-export { storage, db, ref, uploadBytes, getDownloadURL, collection, addDoc, updateDoc, getDocs, deleteDoc, doc, app, auth, signOut, serverTimestamp };
+const analytics = getAnalytics(app);
