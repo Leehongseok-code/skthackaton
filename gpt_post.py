@@ -11,7 +11,7 @@ class GPT():
         upload_url = "https://api.imgbb.com/1/upload"
 
         # ImgBB API 키
-        api_key = "090dbbdaf9a4c7c9f24d8a2cf7431dc7"
+        api_key = ""
 
         # 이미지 파일 열기
         with open(path, "rb") as image_file:
