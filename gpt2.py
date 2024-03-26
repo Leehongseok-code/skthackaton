@@ -2,7 +2,7 @@
 import os
 import openai
 
-openai.api_key ="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" 
+openai.api_key ="" 
 question = input("한국어 할 수 있어?:")
 
 completion = openai.ChatCompletion.create(
