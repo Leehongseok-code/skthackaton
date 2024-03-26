@@ -2,7 +2,7 @@ import openai
 
 class DallE():
     def __init__(self):
-        openai.api_key = "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"
+        openai.api_key = ""
         messages = []
         self.generated_image = ""
 
