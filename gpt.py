@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = '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'
+openai.api_key = ''
 messages = []
 def gpt(content):
     messages = []
