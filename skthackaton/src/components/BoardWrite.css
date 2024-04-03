@@ -1,0 +1,50 @@
+/* src/components/BoardWrite.css */
+
+.board-write-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="file"] {
+    margin-top: 10px;
+  }
+  
+  input[type="submit"] {
+    background-color: #3F51B5;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .submit-button-container {
+    text-align: right; /* 버튼을 오른쪽으로 정렬합니다. */
+    margin-top: 20px; /* 버튼과 입력 창 사이의 간격을 조정합니다. */
+  }
+  
+  /* 추가적으로 필요한 스타일링을 여기에 추가할 수 있습니다. */
+  
